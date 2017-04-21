@@ -1157,7 +1157,7 @@
         <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='EXPANDED'/>
         <size xmi:type='DI:Dimension' height='175.83596801757812' width='150.0'/>
       </contained>
-      <position xmi:type='DI:Point' x='-239.99998474121094' y='315.0'/>
+      <position xmi:type='DI:Point' x='-209.99998474121094' y='315.0'/>
       <property xmi:type='DI:Property' key='GroupName' value='Gestión de excepciones'/>
       <property xmi:type='DI:Property' key='titleAlignment' value='CENTER'/>
       <property xmi:type='DI:Property' key='fillColor' value='#ffefd6'/>

@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 
+/**
+ * Clase dedicada a la interacción con el usuario.
+ * @author Jesús Rivero Muñiz
+ */
 public class UtilidadesES {
     /**
      * Flujo de entrada.

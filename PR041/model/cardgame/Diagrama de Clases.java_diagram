@@ -4169,7 +4169,7 @@
       <position xmi:type='DI:Point' x='0.0' y='-160.8359375'/>
       <property xmi:type='DI:Property' key='GroupName' value='Procesos'/>
       <property xmi:type='DI:Property' key='titleAlignment' value='CENTER'/>
-      <property xmi:type='DI:Property' key='fillColor' value='#ffffcc'/>
+      <property xmi:type='DI:Property' key='fillColor' value='#d6ffd6'/>
       <property xmi:type='DI:Property' key='showTitle' value='true'/>
       <property xmi:type='DI:Property' key='fontColor' value='#0'/>
       <property xmi:type='DI:Property' key='lineColor' value='#a5a5a5'/>

@@ -1,5 +1,13 @@
 package cardgame.bd;
 
+import cardgame.juego.Jugador;
+import cardgame.juego.ListaJugadores;
+import cardgame.juego.ListaManos;
+import cardgame.juego.ListaPartidas;
+import cardgame.juego.Mano;
+import cardgame.juego.Mazo;
+import cardgame.juego.Partida;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -93,5 +101,210 @@ public class DAOImpl implements DAO {
             conexion.close();
             conexion = null;
         }
+    }
+    
+    /**
+     * Recupera todas las cartas de la base de datos y crea un mazo con ellas.
+     * @return Devuelve el mazo con las cartas.
+     * @throws SQLException
+     */
+    public Mazo recuperarMazo() throws SQLException {
+        Mazo mazo = new Mazo();
+        try {
+            getConexion();
+        } finally {
+            closeConexion();
+        }
+        return mazo;
+    }
+
+    /**
+     * Recupera todos los jugadores que hay registrados en la base de datos.
+     * @return Devuelve un contenedor con los jugadores registrados.
+     * @throws SQLException
+     */
+    public ListaJugadores recuperarJugadores() throws SQLException {
+        try {
+            getConexion();
+            
+        } finally {
+            closeConexion();
+        }
+        return null;
+    }
+
+    /**
+     * Recupera un jugador de la base de datos.
+     * @param nombre Nombre del jugador.
+     * @return Devuelve un objeto jugador con los datos recuperados.
+     * @throws SQLException
+     */
+    public Jugador recuperarJugador(String nombre) throws SQLException {
+        try {
+            getConexion();
+            
+        } finally {
+            closeConexion();
+        }
+        return null;
+    }
+
+    /**
+     * Consulta todas las partidas almacenadas en la base de datos.
+     * @return Devuelve un contenedor con las partidas.
+     * @throws SQLException
+     */
+    public ListaPartidas consultarPartidas() throws SQLException {
+        try {
+            getConexion();
+            
+        } finally {
+            closeConexion();
+        }
+        return null;
+    }
+
+    /**
+     * Recupera una partida de la base de datos.
+     * @param numPartida Número de partida.
+     * @return Devuelve un objeto partida con los datos almacenados.
+     * @throws SQLException
+     */
+    public Partida recuperarPartida(int numPartida) throws SQLException {
+        try {
+            getConexion();
+            
+        } finally {
+            closeConexion();
+        }
+        return null;
+    }
+
+    /**
+     * Inserta una lista de partidas en la base de datos.
+     * @param listaPartidas Contenedor con las partidas.
+     * @return Devuelve el número de registros insertados.
+     * @throws SQLException
+     */
+    public int insertarPartidas(ListaPartidas listaPartidas) throws SQLException {
+        try {
+            getConexion();
+            
+        } finally {
+            closeConexion();
+        }
+        return 0;
+    }
+
+    /**
+     * Inserta una partida en la base de datos.
+     * @param partida Partida a almacenar.
+     * @return Devuelve 1 si se ha insertado, 0 si no se ha podido insertar.
+     * @throws SQLException
+     */
+    public int insertarPartidas(Partida partida) throws SQLException {
+        try {
+            getConexion();
+            
+        } finally {
+            closeConexion();
+        }
+        return 0;
+    }
+
+    /**
+     * Inserta una lista de jugadores en la base de datos.
+     * @param listaJugadores Contenedor con los jugadores.
+     * @return Devuelve el número de registros insertados.
+     * @throws SQLException
+     */
+    public int insertarJugadores(ListaJugadores listaJugadores) throws SQLException {
+        try {
+            getConexion();
+            
+        } finally {
+            closeConexion();
+        }
+        return 0;
+    }
+
+    /**
+     * Inserta un jugador en la base de datos.
+     * @param jugador Jugador a insertar.
+     * @return Devuelve 1 si se ha insertado, 0 si no se ha podido insertar.
+     * @throws SQLException
+     */
+    public int insertarJugadores(Jugador jugador) throws SQLException {
+        try {
+            getConexion();
+            
+        } finally {
+            closeConexion();
+        }
+        return 0;
+    }
+
+    /**
+     * Inserta una lista de manos en la base de datos.
+     * @param listaManos Contenedor con las manos.
+     * @return Devuelve el número de registros insertados.
+     * @throws SQLException
+     */
+    public int insertarManos(ListaManos listaManos) throws SQLException {
+        try {
+            getConexion();
+            
+        } finally {
+            closeConexion();
+        }
+        return 0;
+    }
+
+    /**
+     * Inserta una mano en la base de datos.
+     * @param mano Mano a insertar.
+     * @return Devuelve 1 si se ha insertado, 0 si no se ha podido insertar.
+     * @throws SQLException
+     */
+    public int insertarManos(Mano mano) throws SQLException {
+        try {
+            getConexion();
+            
+        } finally {
+            closeConexion();
+        }
+        return 0;
+    }
+
+    /**
+     * Elimina un jugador de la base de datos.
+     * @param nombre Nombre del jugador.
+     * @return Devuelve 1 si se ha eliminado, 0 si no se ha podido eliminar.
+     * @throws SQLException
+     */
+    public int eliminarJugador(String nombre) throws SQLException {
+        try {
+            getConexion();
+            
+        } finally {
+            closeConexion();
+        }
+        return 0;
+    }
+
+    /**
+     * Elimina una partida de la base de datos.
+     * @param numPartida Número de la partida.
+     * @return Devuelve 1 si se ha eliminado, 0 si no se ha podido eliminar.
+     * @throws SQLException
+     */
+    public int eliminarPartida(int numPartida) throws SQLException {
+        try {
+            getConexion();
+            
+        } finally {
+            closeConexion();
+        }
+        return 0;
     }
 }

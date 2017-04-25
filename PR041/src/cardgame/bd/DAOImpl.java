@@ -11,6 +11,7 @@ import cardgame.juego.Partida;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -263,15 +264,38 @@ public class DAOImpl implements DAO {
      * @throws SQLException
      */
     public int insertarManos(ListaManos listaManos) throws SQLException {
+        int manosInsertadas = 0;
         try {
             getConexion();
             
+            /*
+            String insert = "INSERT INTO MANO VALUES (?,?)";
+            PreparedStatement statement = conexion.prepareStatement(insert);
+                for (Mano mano: listaManos.getListaUsuarios()) {
+                    statement.setString(1, usuario.getLogin());
+                    statement.setString(2, usuario.getClave());
+                    statement.setString(3, usuario.getEmail());
+                    manosInsertadas += statement.executeUpdate();
+                }
+            */
         } finally {
             closeConexion();
         }
-        return 0;
+        return manosInsertadas;
     }
-
+    
+    private int ultimaMano() throws ErrorSQL, SQLException{
+        int ultimaMano = -1;
+        String consulta = "SELECT MAX(id_mano) FROM MANOS";
+        Statement statement = conexion.createStatement();
+        ResultSet registros = statement.executeQuery(consulta);
+        if (registros.next())
+            ultimaMano = registros.getInt("id_mano");
+        else
+            throw new ErrorSQL(1, "No se ha devuelto ningún resultado.");
+        return ultimaMano;
+    }
+    
     /**
      * Inserta una mano en la base de datos.
      * @param mano Mano a insertar.

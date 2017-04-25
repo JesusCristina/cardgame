@@ -1,5 +1,6 @@
 package cardgame.bd;
 
+import cardgame.juego.Carta;
 import cardgame.juego.Jugador;
 import cardgame.juego.ListaJugadores;
 import cardgame.juego.ListaManos;
@@ -10,7 +11,9 @@ import cardgame.juego.Partida;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Implementación de la interfaz DAO.
@@ -112,6 +115,15 @@ public class DAOImpl implements DAO {
         Mazo mazo = new Mazo();
         try {
             getConexion();
+            String consulta = "SELECT valor, palo FROM CARTAS";
+            Statement statement = conexion.createStatement();
+            ResultSet registros = statement.executeQuery(consulta);
+            while (registros.next()) {
+                String palo = registros.getString("palo");
+                String valor = registros.getString("valor");
+                Carta carta = new Carta(palo, valor);
+                mazo.agregarCarta(carta);
+            }
         } finally {
             closeConexion();
         }

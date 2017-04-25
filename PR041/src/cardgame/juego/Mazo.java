@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Mazo {
     private ArrayList<Carta> listaCartas;
     
-    public Mazo() { /*crear el objeto*/
+    public Mazo() {
         listaCartas = new ArrayList<Carta>();
     }
     
@@ -20,7 +20,6 @@ public class Mazo {
     
     public Carta dameCarta(int posicion) {
         Carta carta = listaCartas.get(posicion);
-        return null;
     }
     
     public void eilminaCarta(int posicion) {

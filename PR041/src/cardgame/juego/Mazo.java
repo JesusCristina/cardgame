@@ -20,7 +20,7 @@ public class Mazo {
     
     public Carta dameCarta(int posicion) {
         Carta carta = listaCartas.get(posicion);
-        return (carta);
+        return carta;
     }
     
     public void eilminaCarta(int posicion) {

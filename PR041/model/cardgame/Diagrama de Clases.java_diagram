@@ -434,7 +434,7 @@
                   <property xmi:type='DI:Property' key='columnGap' value='2.0'/>
                   <property xmi:type='DI:Property' key='rowGap' value='0.0'/>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='table'/>
-                  <size xmi:type='DI:Dimension' height='47.761962890625' width='116.0'/>
+                  <size xmi:type='DI:Dimension' height='10.0' width='10.0'/>
                 </contained>
                 <contained xmi:type='DI:GraphNode' xmi:id='id78f0a03c-a4f8-41d0-a811-d28cbc5f0353'>
                   <contained xmi:type='DI:GraphNode' xmi:id='id46491079-14ac-4320-9d9d-9980b780a27c'>
@@ -447,7 +447,7 @@
                     <size xmi:type='DI:Dimension' height='116.0' width='10.0'/>
                   </contained>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='columns'/>
-                  <size xmi:type='DI:Dimension' height='47.761962890625' width='116.0'/>
+                  <size xmi:type='DI:Dimension' height='10.0' width='10.0'/>
                 </contained>
                 <contained xmi:type='DI:GraphNode' xmi:id='id365f4d8b-d825-4b12-b883-fd1ac85b521b'>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='subShapeLinks'/>
@@ -466,7 +466,7 @@
                   <property xmi:type='DI:Property' key='columnGap' value='2.0'/>
                   <property xmi:type='DI:Property' key='rowGap' value='0.0'/>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='table'/>
-                  <size xmi:type='DI:Dimension' height='47.761962890625' width='116.0'/>
+                  <size xmi:type='DI:Dimension' height='10.0' width='10.0'/>
                 </contained>
                 <contained xmi:type='DI:GraphNode' xmi:id='idee1e8a16-aa6e-40fa-8b37-91fb59e832b6'>
                   <contained xmi:type='DI:GraphNode' xmi:id='ida3cca2ff-cf82-4c15-bfc6-f2e75663e0ae'>
@@ -479,7 +479,7 @@
                     <size xmi:type='DI:Dimension' height='116.0' width='10.0'/>
                   </contained>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='columns'/>
-                  <size xmi:type='DI:Dimension' height='47.761962890625' width='116.0'/>
+                  <size xmi:type='DI:Dimension' height='10.0' width='10.0'/>
                 </contained>
                 <contained xmi:type='DI:GraphNode' xmi:id='id32a41b5d-7744-4576-8ed6-340ee852165e'>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='subShapeLinks'/>
@@ -639,7 +639,7 @@
                   <property xmi:type='DI:Property' key='columnGap' value='2.0'/>
                   <property xmi:type='DI:Property' key='rowGap' value='0.0'/>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='table'/>
-                  <size xmi:type='DI:Dimension' height='47.761962890625' width='116.0'/>
+                  <size xmi:type='DI:Dimension' height='10.0' width='10.0'/>
                 </contained>
                 <contained xmi:type='DI:GraphNode' xmi:id='id58de487b-2f2e-4190-8636-0eccb770e454'>
                   <contained xmi:type='DI:GraphNode' xmi:id='id987d8bee-3bd7-419e-9f1a-6772d95a571a'>
@@ -652,7 +652,7 @@
                     <size xmi:type='DI:Dimension' height='116.0' width='10.0'/>
                   </contained>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='columns'/>
-                  <size xmi:type='DI:Dimension' height='47.761962890625' width='116.0'/>
+                  <size xmi:type='DI:Dimension' height='10.0' width='10.0'/>
                 </contained>
                 <contained xmi:type='DI:GraphNode' xmi:id='id1c9f1d31-d3c9-4654-96a3-44c2a4a332b4'>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='subShapeLinks'/>
@@ -671,7 +671,7 @@
                   <property xmi:type='DI:Property' key='columnGap' value='2.0'/>
                   <property xmi:type='DI:Property' key='rowGap' value='0.0'/>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='table'/>
-                  <size xmi:type='DI:Dimension' height='47.761962890625' width='116.0'/>
+                  <size xmi:type='DI:Dimension' height='10.0' width='10.0'/>
                 </contained>
                 <contained xmi:type='DI:GraphNode' xmi:id='id55eb6d78-1bb4-413d-990b-bc9c542c693f'>
                   <contained xmi:type='DI:GraphNode' xmi:id='id9fbf4bfd-6b46-4ca5-bc6f-5a129720a9ab'>
@@ -684,7 +684,7 @@
                     <size xmi:type='DI:Dimension' height='116.0' width='10.0'/>
                   </contained>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='columns'/>
-                  <size xmi:type='DI:Dimension' height='47.761962890625' width='116.0'/>
+                  <size xmi:type='DI:Dimension' height='10.0' width='10.0'/>
                 </contained>
                 <contained xmi:type='DI:GraphNode' xmi:id='ida18a57cf-9a03-43cf-9ae0-823592d442d4'>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='subShapeLinks'/>
@@ -861,6 +861,36 @@
             <waypoint xmi:type='DI:Point' x='75.0001220703125' y='72.86504364013672'/>
             <waypoint xmi:type='DI:Point' x='24.999977111816406' y='72.86504364013672'/>
           </contained>
+          <contained xmi:type='DI:GraphEdge' xmi:id='iddd7ea4f9-2b8f-45f3-a32a-598e48768cc6' anchor='id98d48c23-b426-4fb9-b87d-acf0ec7b12a2 id09c01408-d8cb-4030-8bb2-6af7eae34801'>
+            <contained xmi:type='DI:GraphNode' xmi:id='id638d3eb8-27a7-43e7-9cc5-43562e3b2fd1'>
+              <position xmi:type='DI:Point' x='-49.0' y='21.47607421875'/>
+              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='stereotype'/>
+            </contained>
+            <contained xmi:type='DI:GraphNode' xmi:id='id4c94e00b-2d24-4ed9-93a6-f04d2bce5aca'>
+              <position xmi:type='DI:Point' x='-33.0' y='21.47607421875'/>
+              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='name'/>
+            </contained>
+            <contained xmi:type='DI:GraphNode' xmi:id='idc56b98eb-5957-4343-af33-c6b1d18a6116'>
+              <position xmi:type='DI:Point' x='0.0' y='0.0'/>
+              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationname'/>
+            </contained>
+            <contained xmi:type='DI:GraphNode' xmi:id='id03325c33-e05f-4264-b0a0-b75eeaf99e87'>
+              <position xmi:type='DI:Point' x='0.0' y='0.0'/>
+              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationmultiplicity'/>
+            </contained>
+            <property xmi:type='DI:Property' key='showCardinality' value='true'/>
+            <property xmi:type='DI:Property' key='showRoleNames' value='true'/>
+            <property xmi:type='DI:Property' key='fontColor' value='#0'/>
+            <property xmi:type='DI:Property' key='showStereotype' value='false'/>
+            <property xmi:type='DI:Property' key='font' value='SansSerif,plain,11'/>
+            <property xmi:type='DI:Property' key='showAssocName' value='false'/>
+            <property xmi:type='DI:Property' key='lineColor' value='#646464'/>
+            <property xmi:type='DI:Property' key='lineWidth' value='1.0'/>
+            <property xmi:type='DI:Property' key='EdgeType' value='1'/>
+            <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='JAVA:JIDA;;cardgame.util;;Menu;;utilidadesES'/>
+            <waypoint xmi:type='DI:Point' x='204.9998779296875' y='49.164031982421875'/>
+            <waypoint xmi:type='DI:Point' x='24.999977111816406' y='49.164031982421875'/>
+          </contained>
           <contained xmi:type='DI:GraphEdge' xmi:id='idf71c1e73-88c8-4d20-9349-6c13210c0685' anchor='id98d48c23-b426-4fb9-b87d-acf0ec7b12a2 idb57f00e6-211f-4c35-b5be-b9d37a019dd1'>
             <contained xmi:type='DI:GraphNode' xmi:id='id4098998b-ba4d-46fb-ad93-aaae774ccb60'>
               <position xmi:type='DI:Point' x='0.0' y='0.0'/>
@@ -890,36 +920,6 @@
             <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='JAVA:JIDA;;cardgame.util;;Menu;;opcionesMenu'/>
             <waypoint xmi:type='DI:Point' x='264.9998779296875' y='109.16403198242188'/>
             <waypoint xmi:type='DI:Point' x='264.9998779296875' y='139.16400146484375'/>
-          </contained>
-          <contained xmi:type='DI:GraphEdge' xmi:id='iddd7ea4f9-2b8f-45f3-a32a-598e48768cc6' anchor='id98d48c23-b426-4fb9-b87d-acf0ec7b12a2 id09c01408-d8cb-4030-8bb2-6af7eae34801'>
-            <contained xmi:type='DI:GraphNode' xmi:id='id638d3eb8-27a7-43e7-9cc5-43562e3b2fd1'>
-              <position xmi:type='DI:Point' x='0.0' y='0.0'/>
-              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='stereotype'/>
-            </contained>
-            <contained xmi:type='DI:GraphNode' xmi:id='id4c94e00b-2d24-4ed9-93a6-f04d2bce5aca'>
-              <position xmi:type='DI:Point' x='0.0' y='0.0'/>
-              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='name'/>
-            </contained>
-            <contained xmi:type='DI:GraphNode' xmi:id='idc56b98eb-5957-4343-af33-c6b1d18a6116'>
-              <position xmi:type='DI:Point' x='0.0' y='0.0'/>
-              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationname'/>
-            </contained>
-            <contained xmi:type='DI:GraphNode' xmi:id='id03325c33-e05f-4264-b0a0-b75eeaf99e87'>
-              <position xmi:type='DI:Point' x='0.0' y='0.0'/>
-              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationmultiplicity'/>
-            </contained>
-            <property xmi:type='DI:Property' key='showCardinality' value='true'/>
-            <property xmi:type='DI:Property' key='showRoleNames' value='true'/>
-            <property xmi:type='DI:Property' key='fontColor' value='#0'/>
-            <property xmi:type='DI:Property' key='showStereotype' value='false'/>
-            <property xmi:type='DI:Property' key='font' value='SansSerif,plain,11'/>
-            <property xmi:type='DI:Property' key='showAssocName' value='false'/>
-            <property xmi:type='DI:Property' key='lineColor' value='#646464'/>
-            <property xmi:type='DI:Property' key='lineWidth' value='1.0'/>
-            <property xmi:type='DI:Property' key='EdgeType' value='1'/>
-            <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='JAVA:JIDA;;cardgame.util;;Menu;;utilidadesES'/>
-            <waypoint xmi:type='DI:Point' x='204.9998779296875' y='49.164031982421875'/>
-            <waypoint xmi:type='DI:Point' x='24.999977111816406' y='49.164031982421875'/>
           </contained>
           <position xmi:type='DI:Point' x='-100.0' y='-10.835968017578125'/>
           <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='BodyCompartment'/>
@@ -961,7 +961,7 @@
                   <property xmi:type='DI:Property' key='columnGap' value='2.0'/>
                   <property xmi:type='DI:Property' key='rowGap' value='0.0'/>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='table'/>
-                  <size xmi:type='DI:Dimension' height='47.761962890625' width='116.0'/>
+                  <size xmi:type='DI:Dimension' height='10.0' width='10.0'/>
                 </contained>
                 <contained xmi:type='DI:GraphNode' xmi:id='id2c81840c-bd47-49dc-bcef-0320c94412f7'>
                   <contained xmi:type='DI:GraphNode' xmi:id='id0c2e0446-638d-4048-b524-d843076df162'>
@@ -974,7 +974,7 @@
                     <size xmi:type='DI:Dimension' height='116.0' width='10.0'/>
                   </contained>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='columns'/>
-                  <size xmi:type='DI:Dimension' height='47.761962890625' width='116.0'/>
+                  <size xmi:type='DI:Dimension' height='10.0' width='10.0'/>
                 </contained>
                 <contained xmi:type='DI:GraphNode' xmi:id='id901b9dce-d4c0-48c9-9921-fccfd7fb0c71'>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='subShapeLinks'/>
@@ -993,7 +993,7 @@
                   <property xmi:type='DI:Property' key='columnGap' value='2.0'/>
                   <property xmi:type='DI:Property' key='rowGap' value='0.0'/>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='table'/>
-                  <size xmi:type='DI:Dimension' height='47.761962890625' width='116.0'/>
+                  <size xmi:type='DI:Dimension' height='10.0' width='10.0'/>
                 </contained>
                 <contained xmi:type='DI:GraphNode' xmi:id='id39b34f4b-eb2e-48d9-8f24-3adf9f20b8bc'>
                   <contained xmi:type='DI:GraphNode' xmi:id='id245eaf95-4234-4772-9d60-f3a51afcd168'>
@@ -1006,7 +1006,7 @@
                     <size xmi:type='DI:Dimension' height='116.0' width='10.0'/>
                   </contained>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='columns'/>
-                  <size xmi:type='DI:Dimension' height='47.761962890625' width='116.0'/>
+                  <size xmi:type='DI:Dimension' height='10.0' width='10.0'/>
                 </contained>
                 <contained xmi:type='DI:GraphNode' xmi:id='id7d2bb3f2-5f54-4db2-b679-ec7dc37c68ce'>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='subShapeLinks'/>
@@ -1223,7 +1223,7 @@
                   <property xmi:type='DI:Property' key='columnGap' value='2.0'/>
                   <property xmi:type='DI:Property' key='rowGap' value='0.0'/>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='table'/>
-                  <size xmi:type='DI:Dimension' height='234.0478515625' width='176.0'/>
+                  <size xmi:type='DI:Dimension' height='10.0' width='10.0'/>
                 </contained>
                 <contained xmi:type='DI:GraphNode' xmi:id='id4ac3d6b1-b1bc-495f-802b-bb6a5ec11908'>
                   <contained xmi:type='DI:GraphNode' xmi:id='ideffb567e-c9b3-4e06-b810-2552da7424a6'>
@@ -1236,7 +1236,7 @@
                     <size xmi:type='DI:Dimension' height='176.0' width='10.0'/>
                   </contained>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='columns'/>
-                  <size xmi:type='DI:Dimension' height='234.0478515625' width='176.0'/>
+                  <size xmi:type='DI:Dimension' height='10.0' width='10.0'/>
                 </contained>
                 <contained xmi:type='DI:GraphNode' xmi:id='id5136236a-3dd6-423e-a12f-a655ede4756d'>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='subShapeLinks'/>
@@ -1396,7 +1396,7 @@
                   <property xmi:type='DI:Property' key='columnGap' value='2.0'/>
                   <property xmi:type='DI:Property' key='rowGap' value='0.0'/>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='table'/>
-                  <size xmi:type='DI:Dimension' height='47.761962890625' width='161.0'/>
+                  <size xmi:type='DI:Dimension' height='10.0' width='10.0'/>
                 </contained>
                 <contained xmi:type='DI:GraphNode' xmi:id='idcc16e142-d613-4645-8c9a-7e93d8d562b1'>
                   <contained xmi:type='DI:GraphNode' xmi:id='id9bf66967-3619-4391-91ce-c5c2610acf03'>
@@ -1409,7 +1409,7 @@
                     <size xmi:type='DI:Dimension' height='161.0' width='10.0'/>
                   </contained>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='columns'/>
-                  <size xmi:type='DI:Dimension' height='47.761962890625' width='161.0'/>
+                  <size xmi:type='DI:Dimension' height='10.0' width='10.0'/>
                 </contained>
                 <contained xmi:type='DI:GraphNode' xmi:id='id8a149a4c-187d-495d-8a7d-da65770a3689'>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='subShapeLinks'/>
@@ -1428,7 +1428,7 @@
                   <property xmi:type='DI:Property' key='columnGap' value='2.0'/>
                   <property xmi:type='DI:Property' key='rowGap' value='0.0'/>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='table'/>
-                  <size xmi:type='DI:Dimension' height='47.761962890625' width='161.0'/>
+                  <size xmi:type='DI:Dimension' height='10.0' width='10.0'/>
                 </contained>
                 <contained xmi:type='DI:GraphNode' xmi:id='idf96a2ce2-1ee9-4c6f-83c9-c0d9e8097b13'>
                   <contained xmi:type='DI:GraphNode' xmi:id='id85017c7d-2760-4f1c-98e6-7f80eff73cda'>
@@ -1441,7 +1441,7 @@
                     <size xmi:type='DI:Dimension' height='161.0' width='10.0'/>
                   </contained>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='columns'/>
-                  <size xmi:type='DI:Dimension' height='47.761962890625' width='161.0'/>
+                  <size xmi:type='DI:Dimension' height='10.0' width='10.0'/>
                 </contained>
                 <contained xmi:type='DI:GraphNode' xmi:id='id43e66b3f-eb34-48ed-a943-cd624ebd617a'>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='subShapeLinks'/>
@@ -2317,7 +2317,7 @@
                   <property xmi:type='DI:Property' key='columnGap' value='2.0'/>
                   <property xmi:type='DI:Property' key='rowGap' value='0.0'/>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='table'/>
-                  <size xmi:type='DI:Dimension' height='10.0' width='10.0'/>
+                  <size xmi:type='DI:Dimension' height='15.52392578125' width='96.0'/>
                 </contained>
                 <contained xmi:type='DI:GraphNode' xmi:id='id35953579-0bb2-4158-b0b0-917b15e6ef2d'>
                   <contained xmi:type='DI:GraphNode' xmi:id='ideb17e2f1-ba01-4090-8ef4-e76e2f5f03f1'>
@@ -2327,10 +2327,10 @@
                     <property xmi:type='DI:Property' key='editable' value='true'/>
                     <property xmi:type='DI:Property' key='fixedWidth' value='false'/>
                     <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='classifierSingleCell'/>
-                    <size xmi:type='DI:Dimension' height='50.0' width='10.0'/>
+                    <size xmi:type='DI:Dimension' height='96.0' width='10.0'/>
                   </contained>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='columns'/>
-                  <size xmi:type='DI:Dimension' height='10.0' width='10.0'/>
+                  <size xmi:type='DI:Dimension' height='15.52392578125' width='96.0'/>
                 </contained>
                 <contained xmi:type='DI:GraphNode' xmi:id='idd39252b2-bd68-453f-93e8-d757372c5dfc'>
                   <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='subShapeLinks'/>
@@ -3057,7 +3057,7 @@
             <size xmi:type='DI:Dimension' height='120.0' width='120.0'/>
           </contained>
           <contained xmi:type='DI:GraphNode' xmi:id='id1d621ba1-98f8-4c94-be9f-3e5da78cd7e1'>
-            <anchorage xmi:type='DI:GraphConnector' xmi:id='id488ede47-eec0-45bc-a151-89cc6735b336' graphEdge='id90839c5d-7cdc-4f5a-a4b8-93738133e762 idcb9aa1cf-b98b-471e-80d6-e7cd0c887609'/>
+            <anchorage xmi:type='DI:GraphConnector' xmi:id='id488ede47-eec0-45bc-a151-89cc6735b336' graphEdge='id90839c5d-7cdc-4f5a-a4b8-93738133e762 iddae487d7-2582-4cee-a08b-d9220f7cb462'/>
             <contained xmi:type='DI:GraphNode' xmi:id='id8c691721-6672-4d54-9efc-125728ed215f'>
               <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='COMPACT'/>
               <size xmi:type='DI:Dimension' height='100.0' width='100.0'/>
@@ -3109,7 +3109,7 @@
                 <contained xmi:type='DI:GraphNode' xmi:id='id79fe8dba-b2ae-4ea3-866b-66f1a5e2859d'>
                   <contained xmi:type='DI:GraphNode' xmi:id='id9470ab12-4a79-43f8-8af3-66eee4da84f3'>
                     <property xmi:type='DI:Property' key='id' value='classifierSingleCell'/>
-                    <property xmi:type='DI:Property' key='preferredWidth' value='0.0'/>
+                    <property xmi:type='DI:Property' key='preferredWidth' value='155.0'/>
                     <property xmi:type='DI:Property' key='visible' value='true'/>
                     <property xmi:type='DI:Property' key='editable' value='true'/>
                     <property xmi:type='DI:Property' key='fixedWidth' value='false'/>
@@ -3262,7 +3262,7 @@
             <size xmi:type='DI:Dimension' height='120.0' width='120.0'/>
           </contained>
           <contained xmi:type='DI:GraphNode' xmi:id='idb4a8151e-a2d5-405c-92ee-b8b434182e24'>
-            <anchorage xmi:type='DI:GraphConnector' xmi:id='id6c23a8af-a1ea-4da7-a128-2117390d760d' graphEdge='id67722908-ba0e-4d97-8d2b-5d470951edb6 id809b0a19-7a35-477e-a08c-c07b448fb42c idcb9aa1cf-b98b-471e-80d6-e7cd0c887609 idf866f872-67bd-4c37-859a-145992f466eb'/>
+            <anchorage xmi:type='DI:GraphConnector' xmi:id='id6c23a8af-a1ea-4da7-a128-2117390d760d' graphEdge='id67722908-ba0e-4d97-8d2b-5d470951edb6 id809b0a19-7a35-477e-a08c-c07b448fb42c iddae487d7-2582-4cee-a08b-d9220f7cb462 idf866f872-67bd-4c37-859a-145992f466eb'/>
             <contained xmi:type='DI:GraphNode' xmi:id='idb3cdf2b5-ae26-4fde-8fdb-35631ada39d8'>
               <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='COMPACT'/>
               <size xmi:type='DI:Dimension' height='100.0' width='100.0'/>
@@ -3314,7 +3314,7 @@
                 <contained xmi:type='DI:GraphNode' xmi:id='ida1ad5454-1f8a-4040-8062-e8525b7cca4c'>
                   <contained xmi:type='DI:GraphNode' xmi:id='id34ed54ce-d5e1-4a24-acaf-a39ac56d21c6'>
                     <property xmi:type='DI:Property' key='id' value='classifierSingleCell'/>
-                    <property xmi:type='DI:Property' key='preferredWidth' value='0.0'/>
+                    <property xmi:type='DI:Property' key='preferredWidth' value='137.0'/>
                     <property xmi:type='DI:Property' key='visible' value='true'/>
                     <property xmi:type='DI:Property' key='editable' value='true'/>
                     <property xmi:type='DI:Property' key='fixedWidth' value='false'/>
@@ -3466,9 +3466,41 @@
             <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='JAVA:JIDC;;cardgame.juego;;###;;Mano' presentation='SYMBOLIC'/>
             <size xmi:type='DI:Dimension' height='120.0' width='120.0'/>
           </contained>
+          <contained xmi:type='DI:GraphEdge' xmi:id='id809b0a19-7a35-477e-a08c-c07b448fb42c' anchor='ide1fa2a14-f238-4d9f-8bec-cfc1e276f5e7 id6c23a8af-a1ea-4da7-a128-2117390d760d'>
+            <contained xmi:type='DI:GraphNode' xmi:id='id99229d82-a937-4ed7-99b4-f80a301b4e34'>
+              <position xmi:type='DI:Point' x='-102.0' y='4.0'/>
+              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='stereotype'/>
+            </contained>
+            <contained xmi:type='DI:GraphNode' xmi:id='id274895a6-88ce-44f0-ba1f-27c58df9fdf2'>
+              <position xmi:type='DI:Point' x='4.0' y='4.0'/>
+              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='name'/>
+            </contained>
+            <contained xmi:type='DI:GraphNode' xmi:id='id1018a314-aeee-45ef-abf0-a76073bf7e64'>
+              <position xmi:type='DI:Point' x='4.0' y='4.0'/>
+              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationname'/>
+            </contained>
+            <contained xmi:type='DI:GraphNode' xmi:id='id5f030cee-2b83-4d9c-a1ee-36f236873a62'>
+              <position xmi:type='DI:Point' x='-15.0' y='4.0'/>
+              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationmultiplicity'/>
+            </contained>
+            <property xmi:type='DI:Property' key='showCardinality' value='true'/>
+            <property xmi:type='DI:Property' key='showRoleNames' value='true'/>
+            <property xmi:type='DI:Property' key='fontColor' value='#0'/>
+            <property xmi:type='DI:Property' key='showStereotype' value='false'/>
+            <property xmi:type='DI:Property' key='font' value='SansSerif,plain,11'/>
+            <property xmi:type='DI:Property' key='showAssocName' value='false'/>
+            <property xmi:type='DI:Property' key='lineColor' value='#646464'/>
+            <property xmi:type='DI:Property' key='lineWidth' value='1.0'/>
+            <property xmi:type='DI:Property' key='EdgeType' value='1'/>
+            <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='JAVA:JIDA;;cardgame.juego;;Partida;;resultado'/>
+            <waypoint xmi:type='DI:Point' x='230.0' y='-110.83590698242188'/>
+            <waypoint xmi:type='DI:Point' x='230.0' y='-125.61451721191406'/>
+            <waypoint xmi:type='DI:Point' x='379.99993896484375' y='-125.61451721191406'/>
+            <waypoint xmi:type='DI:Point' x='379.99993896484375' y='-290.8359375'/>
+          </contained>
           <contained xmi:type='DI:GraphEdge' xmi:id='id90839c5d-7cdc-4f5a-a4b8-93738133e762' anchor='id16ff98d9-935f-4683-9a77-40d45fc48aeb id488ede47-eec0-45bc-a151-89cc6735b336'>
             <contained xmi:type='DI:GraphNode' xmi:id='id156d0585-d4c4-451f-910b-abb9e24cfc14'>
-              <position xmi:type='DI:Point' x='-49.0' y='-68.42822265625'/>
+              <position xmi:type='DI:Point' x='-49.0' y='-89.904296875'/>
               <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='stereotype'/>
             </contained>
             <contained xmi:type='DI:GraphNode' xmi:id='id779c8d64-cbc5-46ce-8a7b-11e4d32b3be5'>
@@ -3495,6 +3527,128 @@
             <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='JAVA:JIDA;;cardgame.juego;;Mazo;;listaCartas'/>
             <waypoint xmi:type='DI:Point' x='440.0' y='99.1640625'/>
             <waypoint xmi:type='DI:Point' x='470.0' y='99.1640625'/>
+          </contained>
+          <contained xmi:type='DI:GraphEdge' xmi:id='id3c3ecca1-6a6f-4029-91b4-ba777a9971e8' anchor='id1df8fd09-7b61-4840-8669-712246d9311d id17fa8a48-df32-4b61-8745-5c45f5308821'>
+            <contained xmi:type='DI:GraphNode' xmi:id='id2fe4c03b-1de9-4660-9355-a7a8a1d3c216'>
+              <position xmi:type='DI:Point' x='-49.0' y='4.0'/>
+              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='stereotype'/>
+            </contained>
+            <contained xmi:type='DI:GraphNode' xmi:id='ide9df55f8-7d83-4ef9-b204-3a96ef9132c6'>
+              <position xmi:type='DI:Point' x='-39.0' y='-25.47607421875'/>
+              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='name'/>
+            </contained>
+            <contained xmi:type='DI:GraphNode' xmi:id='id96fadb29-1308-4cea-bec5-0f21cd7bfd20'>
+              <position xmi:type='DI:Point' x='4.0' y='4.0'/>
+              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationname'/>
+            </contained>
+            <contained xmi:type='DI:GraphNode' xmi:id='id929b68a7-c5e7-473a-80a6-cb4e28a5b9b7'>
+              <position xmi:type='DI:Point' x='-15.0' y='4.0'/>
+              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationmultiplicity'/>
+            </contained>
+            <property xmi:type='DI:Property' key='showCardinality' value='true'/>
+            <property xmi:type='DI:Property' key='showRoleNames' value='true'/>
+            <property xmi:type='DI:Property' key='fontColor' value='#0'/>
+            <property xmi:type='DI:Property' key='showStereotype' value='false'/>
+            <property xmi:type='DI:Property' key='font' value='SansSerif,plain,11'/>
+            <property xmi:type='DI:Property' key='showAssocName' value='false'/>
+            <property xmi:type='DI:Property' key='lineColor' value='#646464'/>
+            <property xmi:type='DI:Property' key='lineWidth' value='1.0'/>
+            <property xmi:type='DI:Property' key='EdgeType' value='1'/>
+            <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='JAVA:JIDA;;cardgame.juego;;ListaJugadores;;listaJugadores'/>
+            <waypoint xmi:type='DI:Point' x='230.00003051757812' y='-260.8359375'/>
+            <waypoint xmi:type='DI:Point' x='230.00003051757812' y='-275.8359375'/>
+            <waypoint xmi:type='DI:Point' x='229.99996948242188' y='-275.8359375'/>
+            <waypoint xmi:type='DI:Point' x='229.99996948242188' y='-290.8359069824219'/>
+          </contained>
+          <contained xmi:type='DI:GraphEdge' xmi:id='id91bc810d-58ac-4720-8dcd-34ab74684aad' anchor='id658f1449-a741-41b2-8733-5d8fe0d53c90 ide1fa2a14-f238-4d9f-8bec-cfc1e276f5e7'>
+            <contained xmi:type='DI:GraphNode' xmi:id='ida146371c-8683-4631-95cb-046dbea678fa'>
+              <position xmi:type='DI:Point' x='-49.0' y='4.0'/>
+              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='stereotype'/>
+            </contained>
+            <contained xmi:type='DI:GraphNode' xmi:id='ida7f6cbf7-de17-4db5-a194-3d2e455b056a'>
+              <position xmi:type='DI:Point' x='-33.0' y='-25.47607421875'/>
+              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='name'/>
+            </contained>
+            <contained xmi:type='DI:GraphNode' xmi:id='id51a854ff-5c70-447c-badd-467054ff58f8'>
+              <position xmi:type='DI:Point' x='4.0' y='-25.47607421875'/>
+              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationname'/>
+            </contained>
+            <contained xmi:type='DI:GraphNode' xmi:id='id606fd964-cf52-44f0-8ca8-74085cfe5e7b'>
+              <position xmi:type='DI:Point' x='4.0' y='4.0'/>
+              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationmultiplicity'/>
+            </contained>
+            <property xmi:type='DI:Property' key='showCardinality' value='true'/>
+            <property xmi:type='DI:Property' key='showRoleNames' value='true'/>
+            <property xmi:type='DI:Property' key='fontColor' value='#0'/>
+            <property xmi:type='DI:Property' key='showStereotype' value='false'/>
+            <property xmi:type='DI:Property' key='font' value='SansSerif,plain,11'/>
+            <property xmi:type='DI:Property' key='showAssocName' value='false'/>
+            <property xmi:type='DI:Property' key='lineColor' value='#646464'/>
+            <property xmi:type='DI:Property' key='lineWidth' value='1.0'/>
+            <property xmi:type='DI:Property' key='EdgeType' value='1'/>
+            <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='JAVA:JIDA;;cardgame.juego;;ListaPartidas;;listaPartidas'/>
+            <waypoint xmi:type='DI:Point' x='319.99993896484375' y='-50.8359375'/>
+            <waypoint xmi:type='DI:Point' x='290.0' y='-50.8359375'/>
+          </contained>
+          <contained xmi:type='DI:GraphEdge' xmi:id='idf866f872-67bd-4c37-859a-145992f466eb' anchor='ida9f7a6e1-e648-443e-9cd2-303b5f7e4a99 id6c23a8af-a1ea-4da7-a128-2117390d760d'>
+            <contained xmi:type='DI:GraphNode' xmi:id='ida3a2e30f-6072-49ba-a44f-1a5d4be56a7e'>
+              <position xmi:type='DI:Point' x='-49.0' y='4.0'/>
+              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='stereotype'/>
+            </contained>
+            <contained xmi:type='DI:GraphNode' xmi:id='id80e87e01-d8ac-4a97-8fc2-00559b709f45'>
+              <position xmi:type='DI:Point' x='-29.5' y='-25.47607421875'/>
+              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='name'/>
+            </contained>
+            <contained xmi:type='DI:GraphNode' xmi:id='id16193e59-392e-4c19-a5f6-6602d8d47f63'>
+              <position xmi:type='DI:Point' x='4.0' y='-25.47607421875'/>
+              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationname'/>
+            </contained>
+            <contained xmi:type='DI:GraphNode' xmi:id='idad7b21cf-a72b-4e4f-a158-111d6064adec'>
+              <position xmi:type='DI:Point' x='4.0' y='4.0'/>
+              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationmultiplicity'/>
+            </contained>
+            <property xmi:type='DI:Property' key='showCardinality' value='true'/>
+            <property xmi:type='DI:Property' key='showRoleNames' value='true'/>
+            <property xmi:type='DI:Property' key='fontColor' value='#0'/>
+            <property xmi:type='DI:Property' key='showStereotype' value='false'/>
+            <property xmi:type='DI:Property' key='font' value='SansSerif,plain,11'/>
+            <property xmi:type='DI:Property' key='showAssocName' value='false'/>
+            <property xmi:type='DI:Property' key='lineColor' value='#646464'/>
+            <property xmi:type='DI:Property' key='lineWidth' value='1.0'/>
+            <property xmi:type='DI:Property' key='EdgeType' value='1'/>
+            <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='JAVA:JIDA;;cardgame.juego;;ListaManos;;listaManos'/>
+            <waypoint xmi:type='DI:Point' x='470.0' y='-350.8359375'/>
+            <waypoint xmi:type='DI:Point' x='439.99993896484375' y='-350.8359375'/>
+          </contained>
+          <contained xmi:type='DI:GraphEdge' xmi:id='id67722908-ba0e-4d97-8d2b-5d470951edb6' anchor='id17fa8a48-df32-4b61-8745-5c45f5308821 id6c23a8af-a1ea-4da7-a128-2117390d760d'>
+            <contained xmi:type='DI:GraphNode' xmi:id='id6adf8e29-f2ee-49f3-80ee-7c30db70248f'>
+              <position xmi:type='DI:Point' x='-49.0' y='-25.47607421875'/>
+              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='stereotype'/>
+            </contained>
+            <contained xmi:type='DI:GraphNode' xmi:id='idcb53a100-d37e-4508-b049-76be215bba9f'>
+              <position xmi:type='DI:Point' x='-17.0' y='4.0'/>
+              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='name'/>
+            </contained>
+            <contained xmi:type='DI:GraphNode' xmi:id='id07c17695-2bd8-4182-a2cf-cfb55fafe31b'>
+              <position xmi:type='DI:Point' x='-38.0' y='4.0'/>
+              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationname'/>
+            </contained>
+            <contained xmi:type='DI:GraphNode' xmi:id='id921e8e49-9caa-4db1-8a81-a83c974cf289'>
+              <position xmi:type='DI:Point' x='-15.0' y='-25.47607421875'/>
+              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationmultiplicity'/>
+            </contained>
+            <property xmi:type='DI:Property' key='showCardinality' value='true'/>
+            <property xmi:type='DI:Property' key='showRoleNames' value='true'/>
+            <property xmi:type='DI:Property' key='fontColor' value='#0'/>
+            <property xmi:type='DI:Property' key='showStereotype' value='false'/>
+            <property xmi:type='DI:Property' key='font' value='SansSerif,plain,11'/>
+            <property xmi:type='DI:Property' key='showAssocName' value='false'/>
+            <property xmi:type='DI:Property' key='lineColor' value='#646464'/>
+            <property xmi:type='DI:Property' key='lineWidth' value='1.0'/>
+            <property xmi:type='DI:Property' key='EdgeType' value='1'/>
+            <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='JAVA:JIDA;;cardgame.juego;;Jugador;;mano'/>
+            <waypoint xmi:type='DI:Point' x='289.9999694824219' y='-350.8359375'/>
+            <waypoint xmi:type='DI:Point' x='319.99993896484375' y='-350.8359375'/>
           </contained>
           <contained xmi:type='DI:GraphEdge' xmi:id='id5810960f-f80c-47f0-b2d2-13cdea8f9b05' anchor='ide1fa2a14-f238-4d9f-8bec-cfc1e276f5e7 id17fa8a48-df32-4b61-8745-5c45f5308821'>
             <contained xmi:type='DI:GraphNode' xmi:id='idffac0fe2-f670-4a53-92b2-3e81dc7391df'>
@@ -3530,191 +3684,37 @@
             <waypoint xmi:type='DI:Point' x='95.29315185546875' y='-350.8359069824219'/>
             <waypoint xmi:type='DI:Point' x='169.99996948242188' y='-350.8359069824219'/>
           </contained>
-          <contained xmi:type='DI:GraphEdge' xmi:id='idcb9aa1cf-b98b-471e-80d6-e7cd0c887609' anchor='id6c23a8af-a1ea-4da7-a128-2117390d760d id488ede47-eec0-45bc-a151-89cc6735b336'>
-            <contained xmi:type='DI:GraphNode' xmi:id='id9317456e-e7ca-4531-8b6e-1d35193570c7'>
+          <contained xmi:type='DI:GraphEdge' xmi:id='iddae487d7-2582-4cee-a08b-d9220f7cb462' anchor='id6c23a8af-a1ea-4da7-a128-2117390d760d id488ede47-eec0-45bc-a151-89cc6735b336'>
+            <contained xmi:type='DI:GraphNode' xmi:id='iddc24dd06-d9da-4562-a02f-6f1d0f9a9382'>
               <position xmi:type='DI:Point' x='-49.0' y='-25.47607421875'/>
               <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='stereotype'/>
             </contained>
-            <contained xmi:type='DI:GraphNode' xmi:id='idfe07eae7-8ca0-411e-b2de-de0ba0fd3309'>
+            <contained xmi:type='DI:GraphNode' xmi:id='id99ba81b2-a673-4113-ab45-1421015c5a15'>
               <position xmi:type='DI:Point' x='-19.5' y='4.0'/>
               <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='name'/>
             </contained>
-            <contained xmi:type='DI:GraphNode' xmi:id='id6fd71aff-e9e6-4d34-9bb5-2b88b168a946'>
+            <contained xmi:type='DI:GraphNode' xmi:id='id92a47f46-fa83-454b-9498-6b0b75cb73b0'>
               <position xmi:type='DI:Point' x='-43.0' y='-25.47607421875'/>
               <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationname'/>
             </contained>
-            <contained xmi:type='DI:GraphNode' xmi:id='id80358894-97e7-45aa-aaf1-772f13e00c39'>
+            <contained xmi:type='DI:GraphNode' xmi:id='idf18b4970-beaf-41d6-9e97-88aca49898e0'>
               <position xmi:type='DI:Point' x='4.0' y='-25.47607421875'/>
               <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationmultiplicity'/>
             </contained>
-            <property xmi:type='DI:Property' key='showCardinality' value='true'/>
+            <property xmi:type='DI:Property' key='EdgeType' value='1'/>
+            <property xmi:type='DI:Property' key='lineWidth' value='1.0'/>
             <property xmi:type='DI:Property' key='showRoleNames' value='true'/>
-            <property xmi:type='DI:Property' key='fontColor' value='#0'/>
             <property xmi:type='DI:Property' key='showStereotype' value='false'/>
+            <property xmi:type='DI:Property' key='showCardinality' value='true'/>
             <property xmi:type='DI:Property' key='font' value='SansSerif,plain,11'/>
             <property xmi:type='DI:Property' key='showAssocName' value='false'/>
             <property xmi:type='DI:Property' key='lineColor' value='#646464'/>
-            <property xmi:type='DI:Property' key='lineWidth' value='1.0'/>
-            <property xmi:type='DI:Property' key='EdgeType' value='1'/>
+            <property xmi:type='DI:Property' key='fontColor' value='#0'/>
             <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='JAVA:JIDA;;cardgame.juego;;Mano;;cartas'/>
             <waypoint xmi:type='DI:Point' x='379.99993896484375' y='-290.8359375'/>
             <waypoint xmi:type='DI:Point' x='379.99993896484375' y='-125.8359375'/>
             <waypoint xmi:type='DI:Point' x='530.0' y='-125.8359375'/>
             <waypoint xmi:type='DI:Point' x='530.0' y='39.1640625'/>
-          </contained>
-          <contained xmi:type='DI:GraphEdge' xmi:id='id67722908-ba0e-4d97-8d2b-5d470951edb6' anchor='id17fa8a48-df32-4b61-8745-5c45f5308821 id6c23a8af-a1ea-4da7-a128-2117390d760d'>
-            <contained xmi:type='DI:GraphNode' xmi:id='id6adf8e29-f2ee-49f3-80ee-7c30db70248f'>
-              <position xmi:type='DI:Point' x='-49.0' y='-25.47607421875'/>
-              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='stereotype'/>
-            </contained>
-            <contained xmi:type='DI:GraphNode' xmi:id='idcb53a100-d37e-4508-b049-76be215bba9f'>
-              <position xmi:type='DI:Point' x='-17.0' y='4.0'/>
-              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='name'/>
-            </contained>
-            <contained xmi:type='DI:GraphNode' xmi:id='id07c17695-2bd8-4182-a2cf-cfb55fafe31b'>
-              <position xmi:type='DI:Point' x='-38.0' y='4.0'/>
-              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationname'/>
-            </contained>
-            <contained xmi:type='DI:GraphNode' xmi:id='id921e8e49-9caa-4db1-8a81-a83c974cf289'>
-              <position xmi:type='DI:Point' x='-15.0' y='-25.47607421875'/>
-              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationmultiplicity'/>
-            </contained>
-            <property xmi:type='DI:Property' key='showCardinality' value='true'/>
-            <property xmi:type='DI:Property' key='showRoleNames' value='true'/>
-            <property xmi:type='DI:Property' key='fontColor' value='#0'/>
-            <property xmi:type='DI:Property' key='showStereotype' value='false'/>
-            <property xmi:type='DI:Property' key='font' value='SansSerif,plain,11'/>
-            <property xmi:type='DI:Property' key='showAssocName' value='false'/>
-            <property xmi:type='DI:Property' key='lineColor' value='#646464'/>
-            <property xmi:type='DI:Property' key='lineWidth' value='1.0'/>
-            <property xmi:type='DI:Property' key='EdgeType' value='1'/>
-            <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='JAVA:JIDA;;cardgame.juego;;Jugador;;mano'/>
-            <waypoint xmi:type='DI:Point' x='289.9999694824219' y='-350.8359375'/>
-            <waypoint xmi:type='DI:Point' x='319.99993896484375' y='-350.8359375'/>
-          </contained>
-          <contained xmi:type='DI:GraphEdge' xmi:id='id809b0a19-7a35-477e-a08c-c07b448fb42c' anchor='ide1fa2a14-f238-4d9f-8bec-cfc1e276f5e7 id6c23a8af-a1ea-4da7-a128-2117390d760d'>
-            <contained xmi:type='DI:GraphNode' xmi:id='id99229d82-a937-4ed7-99b4-f80a301b4e34'>
-              <position xmi:type='DI:Point' x='-102.0' y='4.0'/>
-              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='stereotype'/>
-            </contained>
-            <contained xmi:type='DI:GraphNode' xmi:id='id274895a6-88ce-44f0-ba1f-27c58df9fdf2'>
-              <position xmi:type='DI:Point' x='4.0' y='4.0'/>
-              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='name'/>
-            </contained>
-            <contained xmi:type='DI:GraphNode' xmi:id='id1018a314-aeee-45ef-abf0-a76073bf7e64'>
-              <position xmi:type='DI:Point' x='4.0' y='4.0'/>
-              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationname'/>
-            </contained>
-            <contained xmi:type='DI:GraphNode' xmi:id='id5f030cee-2b83-4d9c-a1ee-36f236873a62'>
-              <position xmi:type='DI:Point' x='-15.0' y='4.0'/>
-              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationmultiplicity'/>
-            </contained>
-            <property xmi:type='DI:Property' key='showCardinality' value='true'/>
-            <property xmi:type='DI:Property' key='showRoleNames' value='true'/>
-            <property xmi:type='DI:Property' key='fontColor' value='#0'/>
-            <property xmi:type='DI:Property' key='showStereotype' value='false'/>
-            <property xmi:type='DI:Property' key='font' value='SansSerif,plain,11'/>
-            <property xmi:type='DI:Property' key='showAssocName' value='false'/>
-            <property xmi:type='DI:Property' key='lineColor' value='#646464'/>
-            <property xmi:type='DI:Property' key='lineWidth' value='1.0'/>
-            <property xmi:type='DI:Property' key='EdgeType' value='1'/>
-            <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='JAVA:JIDA;;cardgame.juego;;Partida;;resultado'/>
-            <waypoint xmi:type='DI:Point' x='230.0' y='-110.83590698242188'/>
-            <waypoint xmi:type='DI:Point' x='230.0' y='-125.61451721191406'/>
-            <waypoint xmi:type='DI:Point' x='379.99993896484375' y='-125.61451721191406'/>
-            <waypoint xmi:type='DI:Point' x='379.99993896484375' y='-290.8359375'/>
-          </contained>
-          <contained xmi:type='DI:GraphEdge' xmi:id='id3c3ecca1-6a6f-4029-91b4-ba777a9971e8' anchor='id1df8fd09-7b61-4840-8669-712246d9311d id17fa8a48-df32-4b61-8745-5c45f5308821'>
-            <contained xmi:type='DI:GraphNode' xmi:id='id2fe4c03b-1de9-4660-9355-a7a8a1d3c216'>
-              <position xmi:type='DI:Point' x='-49.0' y='4.0'/>
-              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='stereotype'/>
-            </contained>
-            <contained xmi:type='DI:GraphNode' xmi:id='ide9df55f8-7d83-4ef9-b204-3a96ef9132c6'>
-              <position xmi:type='DI:Point' x='-39.0' y='-25.47607421875'/>
-              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='name'/>
-            </contained>
-            <contained xmi:type='DI:GraphNode' xmi:id='id96fadb29-1308-4cea-bec5-0f21cd7bfd20'>
-              <position xmi:type='DI:Point' x='4.0' y='4.0'/>
-              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationname'/>
-            </contained>
-            <contained xmi:type='DI:GraphNode' xmi:id='id929b68a7-c5e7-473a-80a6-cb4e28a5b9b7'>
-              <position xmi:type='DI:Point' x='-15.0' y='4.0'/>
-              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationmultiplicity'/>
-            </contained>
-            <property xmi:type='DI:Property' key='showCardinality' value='true'/>
-            <property xmi:type='DI:Property' key='showRoleNames' value='true'/>
-            <property xmi:type='DI:Property' key='fontColor' value='#0'/>
-            <property xmi:type='DI:Property' key='showStereotype' value='false'/>
-            <property xmi:type='DI:Property' key='font' value='SansSerif,plain,11'/>
-            <property xmi:type='DI:Property' key='showAssocName' value='false'/>
-            <property xmi:type='DI:Property' key='lineColor' value='#646464'/>
-            <property xmi:type='DI:Property' key='lineWidth' value='1.0'/>
-            <property xmi:type='DI:Property' key='EdgeType' value='1'/>
-            <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='JAVA:JIDA;;cardgame.juego;;ListaJugadores;;listaJugadores'/>
-            <waypoint xmi:type='DI:Point' x='230.00003051757812' y='-260.8359375'/>
-            <waypoint xmi:type='DI:Point' x='230.00003051757812' y='-275.8359375'/>
-            <waypoint xmi:type='DI:Point' x='229.99996948242188' y='-275.8359375'/>
-            <waypoint xmi:type='DI:Point' x='229.99996948242188' y='-290.8359069824219'/>
-          </contained>
-          <contained xmi:type='DI:GraphEdge' xmi:id='idf866f872-67bd-4c37-859a-145992f466eb' anchor='ida9f7a6e1-e648-443e-9cd2-303b5f7e4a99 id6c23a8af-a1ea-4da7-a128-2117390d760d'>
-            <contained xmi:type='DI:GraphNode' xmi:id='ida3a2e30f-6072-49ba-a44f-1a5d4be56a7e'>
-              <position xmi:type='DI:Point' x='-49.0' y='4.0'/>
-              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='stereotype'/>
-            </contained>
-            <contained xmi:type='DI:GraphNode' xmi:id='id80e87e01-d8ac-4a97-8fc2-00559b709f45'>
-              <position xmi:type='DI:Point' x='-29.5' y='-25.47607421875'/>
-              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='name'/>
-            </contained>
-            <contained xmi:type='DI:GraphNode' xmi:id='id16193e59-392e-4c19-a5f6-6602d8d47f63'>
-              <position xmi:type='DI:Point' x='4.0' y='-25.47607421875'/>
-              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationname'/>
-            </contained>
-            <contained xmi:type='DI:GraphNode' xmi:id='idad7b21cf-a72b-4e4f-a158-111d6064adec'>
-              <position xmi:type='DI:Point' x='4.0' y='4.0'/>
-              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationmultiplicity'/>
-            </contained>
-            <property xmi:type='DI:Property' key='showCardinality' value='true'/>
-            <property xmi:type='DI:Property' key='showRoleNames' value='true'/>
-            <property xmi:type='DI:Property' key='fontColor' value='#0'/>
-            <property xmi:type='DI:Property' key='showStereotype' value='false'/>
-            <property xmi:type='DI:Property' key='font' value='SansSerif,plain,11'/>
-            <property xmi:type='DI:Property' key='showAssocName' value='false'/>
-            <property xmi:type='DI:Property' key='lineColor' value='#646464'/>
-            <property xmi:type='DI:Property' key='lineWidth' value='1.0'/>
-            <property xmi:type='DI:Property' key='EdgeType' value='1'/>
-            <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='JAVA:JIDA;;cardgame.juego;;ListaManos;;listaManos'/>
-            <waypoint xmi:type='DI:Point' x='470.0' y='-350.8359375'/>
-            <waypoint xmi:type='DI:Point' x='439.99993896484375' y='-350.8359375'/>
-          </contained>
-          <contained xmi:type='DI:GraphEdge' xmi:id='id91bc810d-58ac-4720-8dcd-34ab74684aad' anchor='id658f1449-a741-41b2-8733-5d8fe0d53c90 ide1fa2a14-f238-4d9f-8bec-cfc1e276f5e7'>
-            <contained xmi:type='DI:GraphNode' xmi:id='ida146371c-8683-4631-95cb-046dbea678fa'>
-              <position xmi:type='DI:Point' x='-49.0' y='4.0'/>
-              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='stereotype'/>
-            </contained>
-            <contained xmi:type='DI:GraphNode' xmi:id='ida7f6cbf7-de17-4db5-a194-3d2e455b056a'>
-              <position xmi:type='DI:Point' x='-33.0' y='-25.47607421875'/>
-              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='name'/>
-            </contained>
-            <contained xmi:type='DI:GraphNode' xmi:id='id51a854ff-5c70-447c-badd-467054ff58f8'>
-              <position xmi:type='DI:Point' x='4.0' y='-25.47607421875'/>
-              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationname'/>
-            </contained>
-            <contained xmi:type='DI:GraphNode' xmi:id='id606fd964-cf52-44f0-8ca8-74085cfe5e7b'>
-              <position xmi:type='DI:Point' x='4.0' y='4.0'/>
-              <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='destinationmultiplicity'/>
-            </contained>
-            <property xmi:type='DI:Property' key='showCardinality' value='true'/>
-            <property xmi:type='DI:Property' key='showRoleNames' value='true'/>
-            <property xmi:type='DI:Property' key='fontColor' value='#0'/>
-            <property xmi:type='DI:Property' key='showStereotype' value='false'/>
-            <property xmi:type='DI:Property' key='font' value='SansSerif,plain,11'/>
-            <property xmi:type='DI:Property' key='showAssocName' value='false'/>
-            <property xmi:type='DI:Property' key='lineColor' value='#646464'/>
-            <property xmi:type='DI:Property' key='lineWidth' value='1.0'/>
-            <property xmi:type='DI:Property' key='EdgeType' value='1'/>
-            <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='JAVA:JIDA;;cardgame.juego;;ListaPartidas;;listaPartidas'/>
-            <waypoint xmi:type='DI:Point' x='319.99993896484375' y='-50.8359375'/>
-            <waypoint xmi:type='DI:Point' x='290.0' y='-50.8359375'/>
           </contained>
           <position xmi:type='DI:Point' x='15.0' y='-410.8359375'/>
           <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='BodyCompartment'/>

@@ -1,11 +1,5 @@
 package cardgame.juego;
 
-//TODO Documentación e implementación
-/*
- * Implementar método toString() con la siguiente sintaxis de ejemplo:
- * "A de Tréboles". También se tienen que implementar los metodos
- * getter.
- */
 /**
  * Encapsula el concepto de carta del juego.
  * @author Cristina Polo S�nchez

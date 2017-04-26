@@ -1,5 +1,6 @@
 package cardgame.bd;
 
+import cardgame.juego.Carta;
 import cardgame.juego.Jugador;
 import cardgame.juego.ListaJugadores;
 import cardgame.juego.ListaManos;
@@ -10,7 +11,10 @@ import cardgame.juego.Partida;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Implementación de la interfaz DAO.
@@ -112,6 +116,15 @@ public class DAOImpl implements DAO {
         Mazo mazo = new Mazo();
         try {
             getConexion();
+            String consulta = "SELECT valor, palo FROM CARTAS";
+            Statement statement = conexion.createStatement();
+            ResultSet registros = statement.executeQuery(consulta);
+            while (registros.next()) {
+                String palo = registros.getString("palo");
+                String valor = registros.getString("valor");
+                Carta carta = new Carta(palo, valor);
+                mazo.agregarCarta(carta);
+            }
         } finally {
             closeConexion();
         }
@@ -251,15 +264,45 @@ public class DAOImpl implements DAO {
      * @throws SQLException
      */
     public int insertarManos(ListaManos listaManos) throws SQLException {
+        int manosInsertadas = 0;
         try {
             getConexion();
             
+            /*
+            String insert = "INSERT INTO MANO VALUES (?,?)";
+            PreparedStatement statement = conexion.prepareStatement(insert);
+                for (Mano mano: listaManos.getListaUsuarios()) {
+                    statement.setString(1, usuario.getLogin());
+                    statement.setString(2, usuario.getClave());
+                    statement.setString(3, usuario.getEmail());
+                    manosInsertadas += statement.executeUpdate();
+                }
+            */
         } finally {
             closeConexion();
         }
-        return 0;
+        return manosInsertadas;
     }
-
+    
+    /**
+     * Devuelve el número de la última mano registrada en la
+     * base de datos.
+     * @return Numero de la última mano.
+     * @throws ErrorSQL Informa de que no se han devuelto datos.
+     * @throws SQLException
+     */
+    private int ultimaMano() throws ErrorSQL, SQLException{
+        int ultimaMano = 0;
+        String consulta = "SELECT MAX(id_mano) FROM MANOS";
+        Statement statement = conexion.createStatement();
+        ResultSet registros = statement.executeQuery(consulta);
+        if (registros.next())
+            ultimaMano = registros.getInt("id_mano");
+        else
+            throw new ErrorSQL(ErrorSQL.NO_DATA_ERR, "No se han devuelto datos.");
+        return ultimaMano;
+    }
+    
     /**
      * Inserta una mano en la base de datos.
      * @param mano Mano a insertar.

@@ -1,11 +1,11 @@
-package cardgame.excepciones;
+package cardgame.bd;
 
 /**
- * Clase encargada de la gestión de excepciones de la aplicación.
+ * Clase encargada de la gestión de excepciones SQL.
  * @author Jesús Rivero Muñiz
  */
 @SuppressWarnings("oracle.jdeveloper.java.serialversionuid-field-missing")
-public class ErrorAp extends Exception {
+public class ErrorSQL extends Exception {
     
     /**
      * Código del error.
@@ -13,13 +13,15 @@ public class ErrorAp extends Exception {
     private int codError;
     
     /*
-     * -- TABLA DE CÓDIGOS DE ERROR --
-     * 01 - Error de Entrada/Salida.
-     * Excepción: IOException.
-     * .
-     * .
+     * -- TABLA DE CÓDIGOS DE ERROR SQL --
+     * 01 - No se ha devuelto ningún resultado.
+     * Excepción: SQLException.
      */
-    //TODO Incluir todos los códigos de error posibles.
+    /**
+     * ERR 01 - No se han devuelto datos.
+     * Excepción: SQLException.
+     */
+    public static final int NO_DATA_ERR = 1;
     
     /**
      * Mensaje del error.
@@ -32,25 +34,25 @@ public class ErrorAp extends Exception {
     private Exception excepcion;
     
     /**
-     * Constructor que crea un objeto ErrorAp a través de un código
+     * Constructor que crea un objeto ErrorSQL a través de un código
      * y un mensaje de error.
      * @param codError Código del error.
      * @param msgError Mensaje del error.
      */
-    public ErrorAp(int codError, String msgError) {
+    public ErrorSQL(int codError, String msgError) {
         super(msgError);
         this.codError = codError;
         this.msgError = msgError;
     }
     
     /**
-     * Constructor que crea un objeto ErrorAp a través de un código,
+     * Constructor que crea un objeto ErrorSQL a través de un código,
      * un mensaje y a su vez encapsula una excepción.
      * @param codError Código del error.
      * @param msgError Mensaje del error.
      * @param excepcion Excepción obtenida.
      */
-    public ErrorAp(int codError, String msgError, Exception excepcion) {
+    public ErrorSQL(int codError, String msgError, Exception excepcion) {
         super(msgError, excepcion);
         this.codError = codError;
         this.msgError = msgError;

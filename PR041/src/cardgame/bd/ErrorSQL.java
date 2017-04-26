@@ -17,6 +17,11 @@ public class ErrorSQL extends Exception {
      * 01 - No se ha devuelto ningún resultado.
      * Excepción: SQLException.
      */
+    /**
+     * ERR 01 - No se han devuelto datos.
+     * Excepción: SQLException.
+     */
+    public static final int NO_DATA_ERR = 1;
     
     /**
      * Mensaje del error.

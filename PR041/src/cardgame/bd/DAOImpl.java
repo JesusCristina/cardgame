@@ -284,15 +284,22 @@ public class DAOImpl implements DAO {
         return manosInsertadas;
     }
     
+    /**
+     * Devuelve el número de la última mano registrada en la
+     * base de datos.
+     * @return Numero de la última mano.
+     * @throws ErrorSQL Informa de que no se han devuelto datos.
+     * @throws SQLException
+     */
     private int ultimaMano() throws ErrorSQL, SQLException{
-        int ultimaMano = -1;
+        int ultimaMano = 0;
         String consulta = "SELECT MAX(id_mano) FROM MANOS";
         Statement statement = conexion.createStatement();
         ResultSet registros = statement.executeQuery(consulta);
         if (registros.next())
             ultimaMano = registros.getInt("id_mano");
         else
-            throw new ErrorSQL(1, "No se ha devuelto ningún resultado.");
+            throw new ErrorSQL(ErrorSQL.NO_DATA_ERR, "No se han devuelto datos.");
         return ultimaMano;
     }
     

@@ -1,6 +1,7 @@
 package cardgame.juego;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Clase contenedora que guarda una lista de manos.
@@ -8,6 +9,7 @@ import java.util.ArrayList;
  */
 public class ListaManos {
     private ArrayList<Mano> listaManos;
+    
     
     /**
      * Contenedor interno de esta clase en el que se almacena una
@@ -17,6 +19,15 @@ public class ListaManos {
     public ListaManos() {
         listaManos = new ArrayList<Mano>();  
     }       
+    
+    
+    /**
+     * Iterador que devuelve las manos de la lista.
+     * @return Las manos de la lista.
+     */    
+    public Iterator<Mano> getManos() {
+        return listaManos.iterator();
+    }    
     
     /**
      * Método que sirve para agregar una nueva mano a la lista.

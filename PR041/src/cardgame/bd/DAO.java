@@ -107,8 +107,9 @@ public interface DAO {
       * @param listaManos Contenedor con las manos.
       * @return Devuelve el número de registros insertados.
       * @throws SQLException
+      * @throws ErrorSQL
       */
-    public int insertarManos(ListaManos listaManos) throws SQLException;
+    public int insertarManos(ListaManos listaManos) throws SQLException, ErrorSQL;
     
      /**
       * Inserta una mano en la base de datos.

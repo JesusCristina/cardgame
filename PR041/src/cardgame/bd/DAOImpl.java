@@ -262,22 +262,21 @@ public class DAOImpl implements DAO {
      * @param listaManos Contenedor con las manos.
      * @return Devuelve el número de registros insertados.
      * @throws SQLException
+     * @throws ErrorSQL
      */
-    public int insertarManos(ListaManos listaManos) throws SQLException {
+    public int insertarManos(ListaManos listaManos) throws SQLException, ErrorSQL {
         int manosInsertadas = 0;
         try {
             getConexion();
-            
-            /*
             String insert = "INSERT INTO MANO VALUES (?,?)";
             PreparedStatement statement = conexion.prepareStatement(insert);
-                for (Mano mano: listaManos.getListaUsuarios()) {
-                    statement.setString(1, usuario.getLogin());
-                    statement.setString(2, usuario.getClave());
-                    statement.setString(3, usuario.getEmail());
-                    manosInsertadas += statement.executeUpdate();
-                }
-            */
+            Mano mano = listaManos.dameMano(0);
+            statement.setInt(1, ultimaMano());
+            while(mano.getCartas().hasNext()) {
+                Carta carta = mano.getCartas().next();
+                statement.setInt(2, averiguarIdCarta(carta));
+                manosInsertadas += statement.executeUpdate();
+            }
         } finally {
             closeConexion();
         }
@@ -291,7 +290,7 @@ public class DAOImpl implements DAO {
      * @throws ErrorSQL Informa de que no se han devuelto datos.
      * @throws SQLException
      */
-    private int ultimaMano() throws ErrorSQL, SQLException{
+    private int ultimaMano() throws ErrorSQL, SQLException {
         int ultimaMano = 0;
         String consulta = "SELECT MAX(id_mano) FROM MANOS";
         Statement statement = conexion.createStatement();
@@ -301,6 +300,29 @@ public class DAOImpl implements DAO {
         else
             throw new ErrorSQL(ErrorSQL.NO_DATA_ERR, "No se han devuelto datos.");
         return ultimaMano;
+    }
+    
+    /**
+     * Devuelve el ID en base de datos de una carta a través
+     * de su palo y su valor.
+     * @param carta Carta proporcionada.
+     * @return Devuelve el ID de la carta.
+     * @throws ErrorSQL
+     * @throws SQLException
+     */
+    private int averiguarIdCarta(Carta carta) throws ErrorSQL, SQLException {
+        int idCarta = 0;
+        String palo = carta.getPalo();
+        String valor = carta.getValor();
+        String consulta = "SELECT id_carta FROM CARTAS" +
+            "WHERE palo LIKE " + palo + " AND valor LIKE " + valor;
+        Statement statement = conexion.createStatement();
+        ResultSet registros = statement.executeQuery(consulta);
+        if (registros.next())
+            idCarta = registros.getInt("id_carta");
+        else
+            throw new ErrorSQL(ErrorSQL.NO_DATA_ERR, "No se han devuelto datos.");
+        return idCarta;
     }
     
     /**

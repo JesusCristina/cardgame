@@ -270,12 +270,15 @@ public class DAOImpl implements DAO {
             getConexion();
             String insert = "INSERT INTO MANO VALUES (?,?)";
             PreparedStatement statement = conexion.prepareStatement(insert);
-            Mano mano = listaManos.dameMano(0);
-            statement.setInt(1, ultimaMano());
-            while(mano.getCartas().hasNext()) {
-                Carta carta = mano.getCartas().next();
-                statement.setInt(2, averiguarIdCarta(carta));
-                manosInsertadas += statement.executeUpdate();
+            while(listaManos.getManos().hasNext()) {
+                Mano mano = listaManos.getManos().next();
+                statement.setInt(1, ultimaMano() + 1);
+                while(mano.getCartas().hasNext()) {
+                    Carta carta = mano.getCartas().next();
+                    statement.setInt(2, averiguarIdCarta(carta));
+                    manosInsertadas += statement.executeUpdate();
+                }
+                manosInsertadas++;
             }
         } finally {
             closeConexion();

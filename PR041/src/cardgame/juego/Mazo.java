@@ -42,6 +42,14 @@ public class Mazo {
     }
     
     /**
+     * Devuelve la últia carta añadida al mazo.
+     * @return
+     */
+    public Carta dameLaUltimaCarta () {
+        return listaCartas.get(listaCartas.size() -1);
+        }
+    
+    /**
      * Elimina una carta del contenedor.
      * @param posicion Posición de la carta a eliminar.
      * ¿¿¿LE METO UN RETURN A ESTO????

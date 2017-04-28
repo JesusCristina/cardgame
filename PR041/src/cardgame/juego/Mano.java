@@ -8,7 +8,7 @@ public class Mano {
     /**
      * Encapsula las manos de cartas del juego.
      * Una mano es un conjunto de 5 cartas.
-     * @author Cristina Polo Sï¿½nchez.
+     * @author Cristina Polo Sánchez.
      */
     private LinkedList<Carta> cartas;
 
@@ -19,4 +19,10 @@ public class Mano {
     public Iterator<Carta> getCartas() {
         return cartas.iterator();
     }
+
+    public void agregarCarta (Carta carta) {
+        cartas.add(carta);
+    }
+      
+    
 }

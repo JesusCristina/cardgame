@@ -294,14 +294,14 @@ public class DAOImpl implements DAO {
      * @throws SQLException
      */
     private int ultimaMano() throws ErrorSQL, SQLException {
-        int ultimaMano = 0;
+        int ultimaMano;
         String consulta = "SELECT MAX(id_mano) FROM MANOS";
         Statement statement = conexion.createStatement();
         ResultSet registros = statement.executeQuery(consulta);
         if (registros.next())
             ultimaMano = registros.getInt("id_mano");
         else
-            throw new ErrorSQL(ErrorSQL.NO_DATA_ERR, "No se han devuelto datos.");
+            ultimaMano = 0;
         return ultimaMano;
     }
     

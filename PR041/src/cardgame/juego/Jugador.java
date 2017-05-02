@@ -11,6 +11,19 @@ public class Jugador {
     private Mano mano;
     
     
+    /**
+     * Constructor por defecto de la clase jugador que inicializa un 
+     * contenedor de jugadores.
+     */
+    public Jugador(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * Devuelve la definición del jugador; los jugadores se distinguen entre sí por el
+     * nombre.
+     * @return La definición del jugador (nombre).
+     */    
     public String toString() { 
         return nombre;
     }    

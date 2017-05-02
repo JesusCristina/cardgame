@@ -47,13 +47,13 @@ public interface DAO {
     public ListaJugadores recuperarJugadores() throws SQLException;
     
     
-    /**
-     * Recupera un jugador de la base de datos.
-     * @param nombre Nombre del jugador.
-     * @return Devuelve un objeto jugador con los datos recuperados.
-     * @throws SQLException
-     */
-    public Jugador recuperarJugador(String nombre) throws SQLException;
+     /**
+      * Consulta si existe un jugador de la base de datos.
+      * @param nombre Nombre del jugador.
+      * @return Devuelve un objeto jugador si existe, null si no existe.
+      * @throws SQLException
+      */
+    public Jugador existeJugador(String nombre) throws SQLException;
 
     /**
      * Consulta todas las partidas almacenadas en la base de datos.

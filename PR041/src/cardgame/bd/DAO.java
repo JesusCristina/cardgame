@@ -53,7 +53,7 @@ public interface DAO {
       * @return Devuelve un objeto jugador si existe, null si no existe.
       * @throws SQLException
       */
-    public Jugador existeJugador(String nombre) throws SQLException;
+    public Jugador existeJugador(String nombre) throws SQLException, ErrorSQL;
 
     /**
      * Consulta todas las partidas almacenadas en la base de datos.

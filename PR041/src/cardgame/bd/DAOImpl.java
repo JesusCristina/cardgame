@@ -16,6 +16,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import java.util.LinkedList;
+
 /**
  * Implementación de la interfaz DAO.
  * @author Jesús Rivero Muñiz
@@ -179,18 +181,77 @@ public class DAOImpl implements DAO {
     }
 
     /**
-     * Consulta todas las partidas almacenadas en la base de datos.
+     * Recupera todas las partidas almacenadas en la base de datos.
      * @return Devuelve un contenedor con las partidas.
+     * @throws ErrorSQL
      * @throws SQLException
      */
-    public ListaPartidas consultarPartidas() throws SQLException {
+    public ListaPartidas recuperarPartidas() throws SQLException, ErrorSQL {
+        ListaPartidas listaPartidas = null;
         try {
             getConexion();
-            
+            String consulta = "SELECT MANOS.id_mano, CARTAS.valor, CARTAS.palo, JUGADORES.nombre, PARTIDAS.id_partida " +
+                "FROM MANOS " +
+                "LEFT JOIN PARTIDAS ON PARTIDAS.id_mano = MANOS.id_mano " +
+                "LEFT JOIN CARTAS ON CARTAS.id_carta = MANOS.id_carta " +
+                "LEFT JOIN JUGADORES ON JUGADORES.id_jug = PARTIDAS.id_jug ORDER BY PARTIDAS.id_partida";
+            Statement statement = conexion.createStatement();
+            ResultSet registros = statement.executeQuery(consulta);
+            if (registros.next()) {
+                listaPartidas = new ListaPartidas();
+                LinkedList<Jugador> listaJugadores = new LinkedList<Jugador>();
+                LinkedList<Mano> resultado = new LinkedList<Mano>();
+                Mano mano = new Mano();
+                int numPartida = registros.getInt("PARTIDAS.id_partida");
+                int numMano = registros.getInt("MANOS.id_mano");
+                registros.beforeFirst();
+                while (registros.next()) {
+                    String palo = registros.getString("CARTAS.palo");
+                    String valor = registros.getString("CARTAS.valor");
+                    String nombre = registros.getString("JUGADORES.nombre");
+                    Carta carta = new Carta(palo, valor);
+                    mano.agregarCarta(carta);
+                    if (!listaJugadores.contains(nombre) || listaJugadores.isEmpty()) {
+                        Jugador jugador = new Jugador(nombre);
+                        listaJugadores.add(jugador);
+                    }
+                    if (numMano != registros.getInt("MANOS.id_mano")) {
+                        numMano = registros.getInt("MANOS.id_mano");
+                        resultado.add(mano);
+                        mano = new Mano();
+                    }
+                    if (numPartida != registros.getInt("PARTIDAS.id_partida") || registros.isLast()) {
+                        numPartida = registros.getInt("PARTIDAS.id_partida");
+                        Partida partida = new Partida(numPartida, listaJugadores, resultado);
+                        listaPartidas.agregarPartida(partida);
+                        listaJugadores = new LinkedList<Jugador>();
+                        resultado = new LinkedList<Mano>();
+                    }
+                }
+            }
         } finally {
             closeConexion();
         }
-        return null;
+        return listaPartidas;
+    }
+    
+    /**
+     * Devuelve el número de la última partida registrada en la
+     * base de datos.
+     * @return Número de la última partida.
+     * @throws ErrorSQL Informa de que no se han devuelto datos.
+     * @throws SQLException
+     */
+    private int ultimaPartida() throws ErrorSQL, SQLException {
+        int ultimaPartida;
+        String consulta = "SELECT DISTINCT MAX(id_partida) FROM PARTIDAS";
+        Statement statement = conexion.createStatement();
+        ResultSet registros = statement.executeQuery(consulta);
+        if (registros.next())
+            ultimaPartida = registros.getInt("id_partida");
+        else
+            ultimaPartida = 0;
+        return ultimaPartida;
     }
 
     /**
@@ -289,9 +350,9 @@ public class DAOImpl implements DAO {
     }
     
     /**
-     * Devuelve el número de la última mano registrada en la
+     * Devuelve el número del último jugador registrado en la
      * base de datos.
-     * @return Numero de la última mano.
+     * @return Numero del último jugador.
      * @throws ErrorSQL Informa de que no se han devuelto datos.
      * @throws SQLException
      */

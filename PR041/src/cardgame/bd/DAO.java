@@ -60,7 +60,7 @@ public interface DAO {
      * @return Devuelve un contenedor con las partidas.
      * @throws SQLException
      */
-    public ListaPartidas consultarPartidas() throws SQLException;
+    public ListaPartidas recuperarPartidas() throws SQLException, ErrorSQL;
     
     /**
      * Recupera una partida de la base de datos.

@@ -229,32 +229,66 @@ public class DAOImpl implements DAO {
      * Inserta una lista de jugadores en la base de datos.
      * @param listaJugadores Contenedor con los jugadores.
      * @return Devuelve el número de registros insertados.
+     * @throws ErrorSQL
      * @throws SQLException
      */
-    public int insertarJugadores(ListaJugadores listaJugadores) throws SQLException {
+    public int insertarJugadores(ListaJugadores listaJugadores) throws SQLException, ErrorSQL {
+        int jugadoresInsertados = 0;
         try {
             getConexion();
-            
+            String insert = "INSERT INTO JUGADORES VALUES (?,?)";
+            PreparedStatement statement = conexion.prepareStatement(insert);
+            while(listaJugadores.getJugadores().hasNext()) {
+                Jugador jugador = listaJugadores.getJugadores().next();
+                statement.setInt(1, ultimoJugador() + 1);
+                statement.setString(2, jugador.getNombre());
+                jugadoresInsertados += statement.executeUpdate();
+            }
         } finally {
             closeConexion();
         }
-        return 0;
+        return jugadoresInsertados;
     }
 
     /**
      * Inserta un jugador en la base de datos.
      * @param jugador Jugador a insertar.
      * @return Devuelve 1 si se ha insertado, 0 si no se ha podido insertar.
+     * @throws ErrorSQL
      * @throws SQLException
      */
-    public int insertarJugadores(Jugador jugador) throws SQLException {
+    public int insertarJugadores(Jugador jugador) throws SQLException, ErrorSQL {
+        int jugadorInsertado = 0;
         try {
             getConexion();
-            
+            String insert = "INSERT INTO JUGADORES VALUES (?,?)";
+            PreparedStatement statement = conexion.prepareStatement(insert);
+            statement.setInt(1, ultimoJugador() + 1);
+            statement.setString(2, jugador.getNombre());
+            jugadorInsertado += statement.executeUpdate();
         } finally {
             closeConexion();
         }
-        return 0;
+        return jugadorInsertado;
+    }
+    
+    /**
+     * Devuelve el número de la última mano registrada en la
+     * base de datos.
+     * @return Numero de la última mano.
+     * @throws ErrorSQL Informa de que no se han devuelto datos.
+     * @throws SQLException
+     */
+    private int ultimoJugador() throws ErrorSQL, SQLException {
+        int ultimoJugador;
+        String consulta = "SELECT MAX(id_jug) FROM JUGADORES";
+        Statement statement = conexion.createStatement();
+        ResultSet registros = statement.executeQuery(consulta);
+        if (registros.next())
+            ultimoJugador = registros.getInt("id_jug");
+        else
+            ultimoJugador = 0;
+        return ultimoJugador;
     }
 
     /**
@@ -278,12 +312,36 @@ public class DAOImpl implements DAO {
                     statement.setInt(2, averiguarIdCarta(carta));
                     manosInsertadas += statement.executeUpdate();
                 }
-                manosInsertadas++;
             }
         } finally {
             closeConexion();
         }
         return manosInsertadas;
+    }
+    
+    /**
+     * Inserta una mano en la base de datos.
+     * @param mano Mano a insertar.
+     * @return Devuelve 1 si se ha insertado, 0 si no se ha podido insertar.
+     * @throws ErrorSQL
+     * @throws SQLException
+     */
+    public int insertarManos(Mano mano) throws SQLException, ErrorSQL {
+        int manoInsertada = 0;
+        try {
+            getConexion();
+            String insert = "INSERT INTO MANO VALUES (?,?)";
+            PreparedStatement statement = conexion.prepareStatement(insert);
+            statement.setInt(1, ultimaMano() + 1);
+            while(mano.getCartas().hasNext()) {
+                Carta carta = mano.getCartas().next();
+                statement.setInt(2, averiguarIdCarta(carta));
+                manoInsertada += statement.executeUpdate();
+            }
+        } finally {
+            closeConexion();
+        }
+        return manoInsertada;
     }
     
     /**
@@ -326,22 +384,6 @@ public class DAOImpl implements DAO {
         else
             throw new ErrorSQL(ErrorSQL.NO_DATA_ERR, "No se han devuelto datos.");
         return idCarta;
-    }
-    
-    /**
-     * Inserta una mano en la base de datos.
-     * @param mano Mano a insertar.
-     * @return Devuelve 1 si se ha insertado, 0 si no se ha podido insertar.
-     * @throws SQLException
-     */
-    public int insertarManos(Mano mano) throws SQLException {
-        try {
-            getConexion();
-            
-        } finally {
-            closeConexion();
-        }
-        return 0;
     }
 
     /**

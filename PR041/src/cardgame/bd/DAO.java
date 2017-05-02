@@ -92,7 +92,7 @@ public interface DAO {
       * @return Devuelve el número de registros insertados.
       * @throws SQLException
       */
-    public int insertarJugadores(ListaJugadores listaJugadores) throws SQLException;
+    public int insertarJugadores(ListaJugadores listaJugadores) throws SQLException, ErrorSQL;
     
     /**
      * Inserta un jugador en la base de datos.
@@ -100,7 +100,7 @@ public interface DAO {
      * @return Devuelve 1 si se ha insertado, 0 si no se ha podido insertar.
      * @throws SQLException
      */
-    public int insertarJugadores(Jugador jugador) throws SQLException;
+    public int insertarJugadores(Jugador jugador) throws SQLException, ErrorSQL;
     
      /**
       * Inserta una lista de manos en la base de datos.
@@ -117,7 +117,7 @@ public interface DAO {
       * @return Devuelve 1 si se ha insertado, 0 si no se ha podido insertar.
       * @throws SQLException
       */
-    public int insertarManos(Mano mano) throws SQLException;
+    public int insertarManos(Mano mano) throws SQLException, ErrorSQL;
     
     /**
      * Elimina un jugador de la base de datos.

@@ -2,12 +2,6 @@ package cardgame.juego;
 
 import java.util.ArrayList;
 
-//TODO Documentación e implementación
-/*
- * Esta clase tendrá un contenedor de cartas. Tendrán que desarrollarse
- * los métodos básicos para trabajar con el contenedor.
- */
-
 /**
  * Encapsula el concepto de mazo en el juego.
  * @author Cristina Polo S�nchez
@@ -52,9 +46,8 @@ public class Mazo {
     /**
      * Elimina una carta del contenedor.
      * @param posicion Posici�n de la carta a eliminar.
-     * ���LE METO UN RETURN A ESTO????
      */
-    public void eilminaCarta(int posicion) {
+    public void eliminaCarta(int posicion) {
         listaCartas.remove(posicion);        
     }
     

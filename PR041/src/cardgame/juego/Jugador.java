@@ -2,18 +2,6 @@ package cardgame.juego;
 
 import java.util.ArrayList;
 
-//TODO Documentación e implementación
-/*
- * Implementar lo siguiente:
- * - Método toString() con la siguiente sintaxis de ejemplo: "Pepe".
- * - Métodos getter.
- * - Método cogerCarta(Mazo mazo): El jugador cogerá la primera carta
- * del mazo y la almacenará en su mano.
- * - Método cogerCarta(Mazo mazo, int veces): El jugador cogerá tantas
- * cartas del mazo como se especifique.
- * - Método mostrarMano(): El jugador mostrará su mano.
- */
-
 /**
  * Encapsula el concepto de jugador en el juego.
  * @author Cristina Polo S�nchez.

@@ -3,26 +3,25 @@ package cardgame.juego;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-//TODO DocumentaciÃ³n e implementaciÃ³n
-/*
- * Esta clase tendrÃ¡ un contenedor de partidas. TendrÃ¡n que desarrollarse
- * los mÃ©todos bÃ¡sicos para trabajar con el contenedor.
- */
-
 /**
- * @author
+ * Clase contenedora que guarda una lista de partidas.
+ * @author Cristina Polo Sánchez
  */
 public class ListaPartidas {
     private LinkedList<Partida> listaPartidas;
     
+    /**
+     * Contenedor interno de esta clase en el que se almacena una lista de 
+     * partidas.
+     */
     public ListaPartidas () {
         listaPartidas = new LinkedList<Partida>();
     }
     
     
     /**
-     * Iterador que devuelve los jugadores de la lista.
-     * @return Los jugadores de la lista.
+     * Iterador que devuelve las partidas de la lista.
+     * @return Los partidas de la lista.
      */
     public Iterator<Partida> getPartidas() {
         return listaPartidas.iterator();
@@ -31,17 +30,17 @@ public class ListaPartidas {
     
     
     /**
-     * Método que sirve para agregar un nuevo jugador a la lista.
-     * @param jugador Añade un jugador.
+     * Método que sirve para agregar una nueva partida a la lista.
+     * @param jugador Añade una partida.
      */
     public void agregarPartida (Partida partida) {
         listaPartidas.add(partida);
     }
     
     /**
-     * Método que sirve para mostrar jugadores.
-     * @param posicion Posición en la que se encuentra el jugador en la lista.
-     * @return Devuelve el jugador.
+     * Método que sirve para mostrar partidas.
+     * @param posicion Posición en la que se encuentra la partida en la lista.
+     * @return Devuelve la partida.
      */
     public Partida damePartida(int posicion) {
         Partida partida = listaPartidas.get(posicion);
@@ -50,10 +49,10 @@ public class ListaPartidas {
     
     
     /**
-     * Se elimina un jugador de la lista. Cada jugador se diferencia de los
+     * Se elimina una partida de la lista. Cada partida se diferencia de las
      * demás por la posición que ocupa en la lista.
-     * @param posicion Posición (expresada en un número entero) de un jugador
-     * en concreto de la lista de jugadores.
+     * @param posicion Posición (expresada en un número entero) de una partida
+     * en concreto de la lista de partidas.
      */
     public void eliminaPartida(int posicion) {
         listaPartidas.remove (posicion);
@@ -61,9 +60,9 @@ public class ListaPartidas {
     
     
     /**
-     * Proporciona información sobre el tamaño de la lista de jugadores.
+     * Proporciona información sobre el tamaño de la lista de partidas.
      * @return Devuelve, en números enteros, el tamaño de la lista de 
-     * jugadores.
+     * partidas.
      */
     public int size() {
         return listaPartidas.size();

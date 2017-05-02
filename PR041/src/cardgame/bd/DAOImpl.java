@@ -153,7 +153,7 @@ public class DAOImpl implements DAO {
      * @throws SQLException
      */
     public Jugador existeJugador(String nombre) throws SQLException {
-        Jugador jugador;
+        Jugador jugador = null;
         try {
             getConexion();
             String consulta = "SELECT nombre FROM JUGADORES WHERE nombre LIKE '" + nombre + "'";

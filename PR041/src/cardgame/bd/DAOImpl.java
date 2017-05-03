@@ -182,11 +182,10 @@ public class DAOImpl implements DAO {
 
     /**
      * Recupera todas las partidas almacenadas en la base de datos.
-     * @return Devuelve un contenedor con las partidas.
-     * @throws ErrorSQL
+     * @return Devuelve un contenedor con las partidas recuperadas.
      * @throws SQLException
      */
-    public ListaPartidas recuperarPartidas() throws SQLException, ErrorSQL {
+    public ListaPartidas recuperarPartidas() throws SQLException {
         ListaPartidas listaPartidas = null;
         try {
             getConexion();
@@ -197,33 +196,47 @@ public class DAOImpl implements DAO {
                 "LEFT JOIN JUGADORES ON JUGADORES.id_jug = PARTIDAS.id_jug ORDER BY PARTIDAS.id_partida";
             Statement statement = conexion.createStatement();
             ResultSet registros = statement.executeQuery(consulta);
+            // Compruebo que se han devuelto datos
             if (registros.next()) {
+                // Inicializo el contenedor que se devolverá
                 listaPartidas = new ListaPartidas();
+                // Declaro e inicializo los objetos que servirán de buffer para añadir datos a cada partida
                 LinkedList<Jugador> listaJugadores = new LinkedList<Jugador>();
                 LinkedList<Mano> resultado = new LinkedList<Mano>();
                 Mano mano = new Mano();
+                // Variable que sirve para controlar cuando hay una nueva partida
                 int numPartida = registros.getInt("PARTIDAS.id_partida");
+                // Variable que sirve para controlar cuando hay una nueva mano
                 int numMano = registros.getInt("MANOS.id_mano");
+                // Devuelvo el cursor del ResultSet a su posición inicial
                 registros.beforeFirst();
+                // Bucle encargado de añadir datos a los contenedores
                 while (registros.next()) {
+                    // Declaración de variables
                     String palo = registros.getString("CARTAS.palo");
                     String valor = registros.getString("CARTAS.valor");
                     String nombre = registros.getString("JUGADORES.nombre");
+                    // Se crea una carta con el palo y el valor devuelto por la consulta SQL
                     Carta carta = new Carta(palo, valor);
+                    // Agrego la carta a la mano
                     mano.agregarCarta(carta);
+                    // Agrego jugadores al contenedor de jugadores controlando si hay duplicados
                     if (!listaJugadores.contains(nombre) || listaJugadores.isEmpty()) {
                         Jugador jugador = new Jugador(nombre);
                         listaJugadores.add(jugador);
                     }
+                    // Cuando hay una nueva mano, la añado al contenedor resultados y creo una nueva Mano
                     if (numMano != registros.getInt("MANOS.id_mano")) {
                         numMano = registros.getInt("MANOS.id_mano");
                         resultado.add(mano);
                         mano = new Mano();
                     }
+                    // Cuando hay una nueva partida, guardo un objeto Partida en el contenedor de partidas
                     if (numPartida != registros.getInt("PARTIDAS.id_partida") || registros.isLast()) {
                         numPartida = registros.getInt("PARTIDAS.id_partida");
                         Partida partida = new Partida(numPartida, listaJugadores, resultado);
                         listaPartidas.agregarPartida(partida);
+                        // Reinicio los buffers de datos
                         listaJugadores = new LinkedList<Jugador>();
                         resultado = new LinkedList<Mano>();
                     }
@@ -233,25 +246,6 @@ public class DAOImpl implements DAO {
             closeConexion();
         }
         return listaPartidas;
-    }
-    
-    /**
-     * Devuelve el número de la última partida registrada en la
-     * base de datos.
-     * @return Número de la última partida.
-     * @throws ErrorSQL Informa de que no se han devuelto datos.
-     * @throws SQLException
-     */
-    private int ultimaPartida() throws ErrorSQL, SQLException {
-        int ultimaPartida;
-        String consulta = "SELECT DISTINCT MAX(id_partida) FROM PARTIDAS";
-        Statement statement = conexion.createStatement();
-        ResultSet registros = statement.executeQuery(consulta);
-        if (registros.next())
-            ultimaPartida = registros.getInt("id_partida");
-        else
-            ultimaPartida = 0;
-        return ultimaPartida;
     }
 
     /**

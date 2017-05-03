@@ -55,12 +55,12 @@ public interface DAO {
       */
     public Jugador existeJugador(String nombre) throws SQLException, ErrorSQL;
 
-    /**
-     * Consulta todas las partidas almacenadas en la base de datos.
-     * @return Devuelve un contenedor con las partidas.
-     * @throws SQLException
-     */
-    public ListaPartidas recuperarPartidas() throws SQLException, ErrorSQL;
+     /**
+      * Recupera todas las partidas almacenadas en la base de datos.
+      * @return Devuelve un contenedor con las partidas recuperadas.
+      * @throws SQLException
+      */
+    public ListaPartidas recuperarPartidas() throws SQLException;
     
     /**
      * Recupera una partida de la base de datos.

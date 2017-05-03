@@ -63,12 +63,22 @@ public interface DAO {
     public ListaPartidas recuperarPartidas() throws SQLException;
     
     /**
+     * Recupera todas las partidas almacenadas en la base de datos de un determinado jugador.
+     * @param nombreJug Nombre del jugador
+     * @return Devuelve un contenedor con las partidas recuperadas para ese jugador.
+     * @throws ErrorSQL
+     * @throws SQLException
+     */
+    public ListaPartidas recuperarPartidas(String nombreJug) throws SQLException, ErrorSQL;
+    
+    /**
      * Recupera una partida de la base de datos.
      * @param numPartida Número de partida.
      * @return Devuelve un objeto partida con los datos almacenados.
+     * @throws ErrorSQL
      * @throws SQLException
      */
-    public Partida recuperarPartida(int numPartida) throws SQLException;
+    public Partida recuperarPartida(int numPartida) throws SQLException, ErrorSQL;
     
     /**
      * Inserta una lista de partidas en la base de datos.

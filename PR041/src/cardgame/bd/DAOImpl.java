@@ -193,7 +193,8 @@ public class DAOImpl implements DAO {
                 "FROM MANOS " +
                 "LEFT JOIN PARTIDAS ON PARTIDAS.id_mano = MANOS.id_mano " +
                 "LEFT JOIN CARTAS ON CARTAS.id_carta = MANOS.id_carta " +
-                "LEFT JOIN JUGADORES ON JUGADORES.id_jug = PARTIDAS.id_jug ORDER BY PARTIDAS.id_partida";
+                "LEFT JOIN JUGADORES ON JUGADORES.id_jug = PARTIDAS.id_jug " +
+                "ORDER BY PARTIDAS.id_mano";
             Statement statement = conexion.createStatement();
             ResultSet registros = statement.executeQuery(consulta);
             // Compruebo que se han devuelto datos
@@ -247,21 +248,139 @@ public class DAOImpl implements DAO {
         }
         return listaPartidas;
     }
+    
+    /**
+     * Recupera todas las partidas almacenadas en la base de datos de un determinado jugador.
+     * @param nombreJug Nombre del jugador
+     * @return Devuelve un contenedor con las partidas recuperadas para ese jugador.
+     * @throws ErrorSQL
+     * @throws SQLException
+     */
+    public ListaPartidas recuperarPartidas(String nombreJug) throws SQLException, ErrorSQL {
+        ListaPartidas listaPartidas = null;
+        try {
+            getConexion();
+            String consulta = "SELECT JUGADORES.nombre, PARTIDAS.id_mano, CARTAS.palo, CARTAS.valor, PARTIDAS.id_partida " +
+                "FROM JUGADORES " +
+                "LEFT JOIN PARTIDAS ON JUGADORES.id_jug = PARTIDAS.id_jug " +
+                "LEFT JOIN MANOS ON PARTIDAS.id_mano = MANOS.id_mano " +
+                "LEFT JOIN CARTAS ON MANOS.id_carta = CARTAS.id_carta " +
+                "WHERE nombre LIKE '" + nombreJug + "' ORDER BY PARTIDAS.id_mano";
+            Statement statement = conexion.createStatement();
+            ResultSet registros = statement.executeQuery(consulta);
+            // Compruebo que se han devuelto datos
+            if (registros.next()) {
+                // Inicializo el contenedor que se devolverá
+                listaPartidas = new ListaPartidas();
+                // Declaro e inicializo los objetos que servirán de buffer para añadir datos a cada partida
+                LinkedList<Jugador> listaJugadores = new LinkedList<Jugador>();
+                LinkedList<Mano> resultado = new LinkedList<Mano>();
+                Mano mano = new Mano();
+                // Variable que sirve para controlar cuando hay una nueva partida
+                int numPartida = registros.getInt("PARTIDAS.id_partida");
+                // Variable que sirve para controlar cuando hay una nueva mano
+                int numMano = registros.getInt("PARTIDAS.id_mano");
+                // Devuelvo el cursor del ResultSet a su posición inicial
+                registros.beforeFirst();
+                // Bucle encargado de añadir datos a los contenedores
+                while (registros.next()) {
+                    // Declaración de variables
+                    String palo = registros.getString("CARTAS.palo");
+                    String valor = registros.getString("CARTAS.valor");
+                    String nombre = registros.getString("JUGADORES.nombre");
+                    // Se crea una carta con el palo y el valor devuelto por la consulta SQL
+                    Carta carta = new Carta(palo, valor);
+                    // Agrego la carta a la mano
+                    mano.agregarCarta(carta);
+                    // Agrego jugadores al contenedor de jugadores controlando si hay duplicados
+                    if (!listaJugadores.contains(nombre) || listaJugadores.isEmpty()) {
+                        Jugador jugador = new Jugador(nombre);
+                        listaJugadores.add(jugador);
+                    }
+                    // Cuando hay una nueva mano, la añado al contenedor resultados y creo una nueva Mano
+                    if (numMano != registros.getInt("PARTIDAS.id_mano")) {
+                        numMano = registros.getInt("PARTIDAS.id_mano");
+                        resultado.add(mano);
+                        mano = new Mano();
+                    }
+                    // Cuando hay una nueva partida, guardo un objeto Partida en el contenedor de partidas
+                    if (numPartida != registros.getInt("PARTIDAS.id_partida") || registros.isLast()) {
+                        numPartida = registros.getInt("PARTIDAS.id_partida");
+                        Partida partida = new Partida(numPartida, listaJugadores, resultado);
+                        listaPartidas.agregarPartida(partida);
+                        // Reinicio los buffers de datos
+                        listaJugadores = new LinkedList<Jugador>();
+                        resultado = new LinkedList<Mano>();
+                    }
+                }
+            } else
+                throw new ErrorSQL(ErrorSQL.NO_DATA_ERR, "No se han devuelto datos.");
+        } finally {
+            closeConexion();
+        }
+        return listaPartidas;
+    }
 
     /**
      * Recupera una partida de la base de datos.
      * @param numPartida Número de partida.
      * @return Devuelve un objeto partida con los datos almacenados.
+     * @throws ErrorSQL
      * @throws SQLException
      */
-    public Partida recuperarPartida(int numPartida) throws SQLException {
+    public Partida recuperarPartida(int numPartida) throws SQLException, ErrorSQL {
+        Partida partida = null;
         try {
             getConexion();
-            
+            String consulta = "SELECT MANOS.id_mano, CARTAS.valor, CARTAS.palo, JUGADORES.nombre, PARTIDAS.id_partida " +
+                "FROM MANOS " +
+                "LEFT JOIN PARTIDAS ON PARTIDAS.id_mano = MANOS.id_mano " +
+                "LEFT JOIN CARTAS ON CARTAS.id_carta = MANOS.id_carta " +
+                "LEFT JOIN JUGADORES ON JUGADORES.id_jug = PARTIDAS.id_jug " +
+                "WHERE PARTIDAS.id_partida = " + numPartida + " " +
+                "ORDER BY PARTIDAS.id_mano";
+            Statement statement = conexion.createStatement();
+            ResultSet registros = statement.executeQuery(consulta);
+            // Compruebo que se han devuelto datos
+            if (registros.next()) {
+                // Declaro e inicializo los objetos que servirán de buffer para añadir datos a la partida
+                LinkedList<Jugador> listaJugadores = new LinkedList<Jugador>();
+                LinkedList<Mano> resultado = new LinkedList<Mano>();
+                Mano mano = new Mano();
+                // Variable que sirve para controlar cuando hay una nueva mano
+                int numMano = registros.getInt("MANOS.id_mano");
+                // Devuelvo el cursor del ResultSet a su posición inicial
+                registros.beforeFirst();
+                // Bucle encargado de añadir datos a los contenedores
+                while (registros.next()) {
+                    // Declaración de variables
+                    String palo = registros.getString("CARTAS.palo");
+                    String valor = registros.getString("CARTAS.valor");
+                    String nombre = registros.getString("JUGADORES.nombre");
+                    // Se crea una carta con el palo y el valor devuelto por la consulta SQL
+                    Carta carta = new Carta(palo, valor);
+                    // Agrego la carta a la mano
+                    mano.agregarCarta(carta);
+                    // Agrego jugadores al contenedor de jugadores controlando si hay duplicados
+                    if (!listaJugadores.contains(nombre) || listaJugadores.isEmpty()) {
+                        Jugador jugador = new Jugador(nombre);
+                        listaJugadores.add(jugador);
+                    }
+                    // Cuando hay una nueva mano, la añado al contenedor resultados y creo una nueva Mano
+                    if (numMano != registros.getInt("MANOS.id_mano")) {
+                        numMano = registros.getInt("MANOS.id_mano");
+                        resultado.add(mano);
+                        mano = new Mano();
+                    }
+                }
+                // Creo el objeto partida con los datos almacenados
+                partida = new Partida(numPartida, listaJugadores, resultado);
+            } else
+                throw new ErrorSQL(ErrorSQL.NO_DATA_ERR, "No se han devuelto datos.");
         } finally {
             closeConexion();
         }
-        return null;
+        return partida;
     }
 
     /**

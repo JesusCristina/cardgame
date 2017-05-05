@@ -97,13 +97,11 @@ public class UtilidadesES {
      * @throws IOException Error en lectura de datos desde flujo entrada.
      * @throws NumberFormatException Formato no válido.
      */
-    public int pideNumero(String mensaje){
+    public int pideNumero(String mensaje) throws IOException {
         int respuesta = 0;
         mostrar(mensaje);
         try {
             respuesta = Integer.parseInt(flujoEntrada.readLine());
-        } catch (IOException e) {
-            flujoSalida.println("Error de Entrada/Salida.");
         } catch (NumberFormatException e) {
             flujoSalida.println("No se ha introducido un número.");
         }

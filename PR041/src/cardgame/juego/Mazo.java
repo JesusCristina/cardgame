@@ -1,10 +1,11 @@
 package cardgame.juego;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Encapsula el concepto de mazo en el juego.
- * @author Cristina Polo Sánchez
+ * @author Cristina Polo Sï¿½nchez
  */
 public class Mazo {
     private ArrayList<Carta> listaCartas;
@@ -18,8 +19,8 @@ public class Mazo {
     }
     
     /**
-     * Añade cartas al mazo.
-     * @param carta Carta a añadir.
+     * Aï¿½ade cartas al mazo.
+     * @param carta Carta a aï¿½adir.
      */
     public void agregarCarta (Carta carta){
         listaCartas.add(carta);
@@ -27,7 +28,7 @@ public class Mazo {
     
     /**
      * Devuelve una carta del contenedor.
-     * @param posicion Posición de la carta a devolver.
+     * @param posicion Posiciï¿½n de la carta a devolver.
      * @return Carta devuelta.
      */
     public Carta dameCarta(int posicion) {
@@ -36,7 +37,7 @@ public class Mazo {
     }
     
     /**
-     * Devuelve la últia carta añadida al mazo.
+     * Devuelve la ï¿½ltia carta aï¿½adida al mazo.
      * @return
      */
     public Carta dameLaUltimaCarta () {
@@ -45,7 +46,7 @@ public class Mazo {
     
     /**
      * Elimina una carta del contenedor.
-     * @param posicion Posición de la carta a eliminar.
+     * @param posicion Posiciï¿½n de la carta a eliminar.
      */
     public void eliminaCarta(int posicion) {
         listaCartas.remove(posicion);        
@@ -53,11 +54,17 @@ public class Mazo {
     
     
     /**
-     * Muestra el tamaño del mazo.
-     * @return Tamaño del mazo.
+     * Muestra el tamaï¿½o del mazo.
+     * @return Tamaï¿½o del mazo.
      */
     public int size() {
         return listaCartas.size();
     }
-    
+
+    /**
+     * Baraja las cartas del mazo.
+     */
+    public void barajar() {
+        Collections.shuffle(listaCartas);
+    }
 }

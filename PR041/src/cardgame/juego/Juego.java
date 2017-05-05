@@ -1,17 +1,25 @@
 package cardgame.juego;
 
+import cardgame.bd.DAO;
 import cardgame.bd.DAOImpl;
+
+import cardgame.procesos.Procesos;
+
+import cardgame.procesos.ProcesosImpl;
+
 import cardgame.util.Menu;
 import cardgame.util.UtilidadesES;
 
+import java.io.IOException;
+
 
 /**
- * Clase contenedora de la mecánica del juego.
+ * Clase contenedora de la mecï¿½nica del juego.
  */
 public class Juego {
     
     /**
-     * Contenedor del menú del juego.
+     * Contenedor del menï¿½ del juego.
      */
     private Menu menu;
     
@@ -21,34 +29,50 @@ public class Juego {
     private UtilidadesES utilidadesES;
     
     /**
-     * Contenedor del mazo para jugar.
+     * Bean DAO.
      */
-    private Mazo mazo;
+    private DAO dao;
     
     /**
-     * Contenedor DAO.
+     * Objeto orientado a los procesos del juego.
      */
-    private DAOImpl daoImpl;
+    private Procesos procesos;
     
     /**
-     * Contenedor con la lista de jugadores.
+     * Constructor por defecto de la clase Juego que crea
+     * objetos de utilidad, procesos y un bean DAO para el
+     * acceso a base de datos.
      */
-    private ListaJugadores listaJugadores;
+    public Juego() {
+        utilidadesES = UtilidadesES.getUtilidadesES();
+        menu = new Menu(utilidadesES){{
+            agregarOpcion("Crear mazo y barajar.");
+            agregarOpcion("Establecer nÃºmero de jugadores (2 o 4).");
+            agregarOpcion("Jugar.");
+            agregarOpcion("Listar por juego y jugador.");
+            agregarOpcion("Eliminar jugador.");
+            agregarOpcion("Eliminar juego.");
+            agregarOpcion("Salir.");
+        }};
+        dao = new DAOImpl("cardgame", "cardgame", "cardgame");
+        procesos = new ProcesosImpl(dao, utilidadesES);
+    }
     
     /**
-     * Contenedor de la lista de partidas.
-     */
-    private ListaPartidas listaPartidas;
-    
-    /**
-     * Contenedor de la lista de manos.
-     */
-    private ListaManos listaManos;
-    
-    /**
-     * Método que inicializa el juego.
+     * Mï¿½todo que inicializa el juego.
      */
     public void ejecutar() {
+        int opcion = -1;
+        try {
+            menu.mostrarMenu("Bienvenid@ a cardgame");
+            do {
+                opcion = utilidadesES.pideNumero("Elija una opciÃ³n: ");
+                procesos.procesar(opcion);
+            }
+            while (opcion != 7);
+        } catch(IOException e) {
+            utilidadesES.mostrarln("Error de E/S.");
+        }
     }
 }
 

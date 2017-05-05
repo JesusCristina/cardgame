@@ -39,7 +39,7 @@ public class Menu {
     public void mostrarMenu() {
         int indice = 1;
         for (String opcion: opcionesMenu.getOpcionesMenu()) {
-            utilidadesES.mostrarln(indice + " - " + opcion);
+            utilidadesES.mostrarln(indice + " " + opcion);
             indice++;
         }
     }

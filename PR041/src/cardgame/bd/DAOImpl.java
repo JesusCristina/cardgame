@@ -406,13 +406,22 @@ public class DAOImpl implements DAO {
      * @throws SQLException
      */
     public int insertarPartidas(Partida partida) throws SQLException {
+        int partidaInsertada = 0;
         try {
             getConexion();
-            
+            String insert = "INSERT INTO PARTIDAS VALUES (?,?,?)";
+            PreparedStatement statement = conexion.prepareStatement(insert);
+            /*
+            for (Mano mano: partida.getResultado()) {
+                
+            }
+            */
+            // statement.setInt(1, partida.getNumPartida());
+            partidaInsertada += statement.executeUpdate();
         } finally {
             closeConexion();
         }
-        return 0;
+        return partidaInsertada;
     }
 
     /**

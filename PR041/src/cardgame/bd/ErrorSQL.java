@@ -13,15 +13,22 @@ public class ErrorSQL extends Exception {
     private int codError;
     
     /*
-     * -- TABLA DE CÓDIGOS DE ERROR SQL --
-     * 01 - No se ha devuelto ningún resultado.
-     * Excepción: SQLException.
+     * -- TABLA DE CÓDIGOS DE ERROR SQL PROPIOS --
      */
     /**
      * ERR 01 - No se han devuelto datos.
      * Excepción: SQLException.
      */
     public static final int NO_DATA_ERR = 1;
+    
+    /*
+     * -- TABLA DE CÓDIGOS DE ERROR SQL GENÉRICOS --
+     */
+    /**
+     * ERR 1062 - Error de clave duplicada.
+     * Excepción: SQLException.
+     */
+    public static final int DUPLICATED_ENTRY_ERR = 1062;
     
     /**
      * Mensaje del error.

@@ -59,7 +59,7 @@ public class Juego {
     }
     
     /**
-     * M�todo que inicializa el juego.
+     * Muestra el menú del juego y procesa una opción.
      */
     public void ejecutar() {
         int opcion = -1;

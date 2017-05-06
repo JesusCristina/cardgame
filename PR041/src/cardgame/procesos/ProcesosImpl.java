@@ -60,6 +60,7 @@ public class ProcesosImpl implements Procesos {
     public ProcesosImpl(DAO dao, UtilidadesES utilidadesES) {
         this.dao = dao;
         this.utilidadesES = utilidadesES;
+        this.listaPartidas = new ListaPartidas();
     }
 
     /**
@@ -91,6 +92,8 @@ public class ProcesosImpl implements Procesos {
                 case 7: 
                     salir();
                     break;
+                default:
+                    utilidadesES.mostrarln("No existe esa opción.");
             }
         } catch(SQLException e) {
             utilidadesES.mostrarln("Error en la base de datos.");
@@ -103,6 +106,10 @@ public class ProcesosImpl implements Procesos {
                     e = e.getNextException();
                 }
             }
+        } catch(ErrorSQL e) {
+            utilidadesES.mostrarln("Error en la base de datos.");
+            utilidadesES.mostrarln("Mensaje de error: " + e.getMsgError());
+            utilidadesES.mostrarln("Código de error: " + e.getCodError());
         }
     }
     
@@ -129,7 +136,7 @@ public class ProcesosImpl implements Procesos {
      * Pregunta cuántos jugadores quiere establecer para el
      * juego de cartas.
      */
-    private void establecerJugadores() throws IOException {
+    private void establecerJugadores() throws IOException, SQLException, ErrorSQL {
         utilidadesES.mostrarln("¿Cuántos jugadores quieres establecer? (2 o 4)");
         int opcion;
         do {
@@ -140,6 +147,39 @@ public class ProcesosImpl implements Procesos {
                 agregarJugadores(opcion);
         } while (opcion != 2 || opcion != 4);
     }
+    
+    /**
+     * Agrega los jugadores al contenedor de jugadores del juego.
+     * @param jugadoresaAgregar Número máximo de jugadores establecido.
+     * @throws SQLException
+     * @throws ErrorSQL
+     */
+    private void agregarJugadores(int jugadoresaAgregar) throws SQLException, ErrorSQL {
+        for (int i = 1; i <= jugadoresaAgregar; i++) {
+            // Se pedirá el nombre del jugador y se transformará a minúsculas.
+            String nombre = utilidadesES.pideCadena("Nombre del jugador: ").toLowerCase();
+            if (utilidadesES.esUnNumero(nombre)) {
+                utilidadesES.mostrarln("Un nombre no puede estar formado sólo por números.");
+                i--;
+            } else if (utilidadesES.contieneNumero(nombre)) {
+                utilidadesES.mostrarln("Un nombre sólo puede estar formado por letras.");
+                i--;
+            } else {
+                Jugador jugador = new Jugador(nombre);
+                listaJugadores.agregarJugador(jugador);
+                /*
+                 * Sólo inserta el jugador en la base de datos si se ha
+                 * agregado al contenedor de jugadores y si no existe ya
+                 * en la base de datos.
+                 */
+                if (listaJugadores.contiene(jugador) && !dao.existeJugador(nombre))
+                    dao.insertarJugadores(jugador);
+                // Si el jugador ya ha jugado antes, muestra un mensaje de bienvenida.
+                if (dao.existeJugador(nombre))
+                    utilidadesES.mostrarln("Hola, " + nombre + " bienvenid@ de nuevo.");
+            }
+        }
+    }
 
     private void jugar() {
         
@@ -148,7 +188,7 @@ public class ProcesosImpl implements Procesos {
     private void listarJuegoJugador() {
         
     }
-
+    
     private void eliminarJugador() {
         
     }
@@ -157,14 +197,8 @@ public class ProcesosImpl implements Procesos {
         
     }
 
-    private void salir() {
-        
-    }
-
-    private void agregarJugadores(int jugadoresaAgregar) {
-        for (int i = 1; i <= jugadoresaAgregar; i++) {
-            String nombre = utilidadesES.pideCadena("Nombre del jugador: ");
-            listaJugadores.agregarJugador(new Jugador(nombre));
-        }
+    private void salir() throws SQLException {
+        utilidadesES.mostrarln("Has decidido salir del juego, las partidas se guardarán.");
+        dao.insertarPartidas(listaPartidas);
     }
 }

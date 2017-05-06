@@ -112,21 +112,26 @@ public class DAOImpl implements DAO {
     /**
      * Recupera todas las cartas de la base de datos y crea un mazo con ellas.
      * @return Devuelve el mazo con las cartas.
+     * @throws ErrorSQL
      * @throws SQLException
      */
-    public Mazo recuperarMazo() throws SQLException {
+    public Mazo recuperarMazo() throws SQLException, ErrorSQL {
         Mazo mazo = new Mazo();
         try {
             getConexion();
             String consulta = "SELECT valor, palo FROM CARTAS";
             Statement statement = conexion.createStatement();
             ResultSet registros = statement.executeQuery(consulta);
-            while (registros.next()) {
-                String palo = registros.getString("palo");
-                String valor = registros.getString("valor");
-                Carta carta = new Carta(palo, valor);
-                mazo.agregarCarta(carta);
-            }
+            if (registros.next()) {
+                registros.beforeFirst();
+                while (registros.next()) {
+                    String palo = registros.getString("palo");
+                    String valor = registros.getString("valor");
+                    Carta carta = new Carta(palo, valor);
+                    mazo.agregarCarta(carta);
+                }
+            } else
+                throw new ErrorSQL(ErrorSQL.NO_DATA_ERR, "No se han devuelto datos.");
         } finally {
             closeConexion();
         }
@@ -572,7 +577,7 @@ public class DAOImpl implements DAO {
         int idCarta = 0;
         String palo = carta.getPalo();
         String valor = carta.getValor();
-        String consulta = "SELECT id_carta FROM CARTAS" +
+        String consulta = "SELECT id_carta FROM CARTAS " +
             "WHERE palo LIKE " + palo + " AND valor LIKE " + valor;
         Statement statement = conexion.createStatement();
         ResultSet registros = statement.executeQuery(consulta);
@@ -584,19 +589,22 @@ public class DAOImpl implements DAO {
     }
 
     /**
-     * Elimina un jugador de la base de datos.
+     * Elimina las manos de un jugador en la base de datos.
      * @param nombre Nombre del jugador.
      * @return Devuelve 1 si se ha eliminado, 0 si no se ha podido eliminar.
      * @throws SQLException
      */
     public int eliminarJugador(String nombre) throws SQLException {
+        int jugadorEliminado = 0;
         try {
             getConexion();
-            
+            String delete = "DELETE FROM JUGADORES WHERE nombre LIKE '" + nombre + "'";
+            Statement statement = conexion.createStatement();
+            jugadorEliminado = statement.executeUpdate(delete);
         } finally {
             closeConexion();
         }
-        return 0;
+        return jugadorEliminado;
     }
 
     /**

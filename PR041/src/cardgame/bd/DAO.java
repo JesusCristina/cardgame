@@ -34,9 +34,10 @@ public interface DAO {
     /**
      * Recupera todas las cartas de la base de datos y crea un mazo con ellas.
      * @return Devuelve el mazo con las cartas.
+     * @throws ErrorSQL
      * @throws SQLException
      */
-    public Mazo recuperarMazo() throws SQLException;
+    public Mazo recuperarMazo() throws SQLException, ErrorSQL;
     
     
     /**

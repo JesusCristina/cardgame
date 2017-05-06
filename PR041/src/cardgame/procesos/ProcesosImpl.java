@@ -78,7 +78,12 @@ public class ProcesosImpl implements Procesos {
                     establecerJugadores();
                     break;
                 case 3: 
-                    jugar();
+                    if (mazo == null) {
+                        utilidadesES.mostrarln("No se puede jugar sin un mazo.");
+                    } else if (listaJugadores.size() == 0) {
+                        utilidadesES.mostrarln("No se puede jugar sin jugadores.");
+                    } else
+                        jugar();
                     break;
                 case 4: 
                     listarJuegoJugador();
@@ -115,12 +120,19 @@ public class ProcesosImpl implements Procesos {
     
     /**
      * Crea el mazo y lo baraja.
+     * @throws ErrorSQL
      */
     private void crearMazoyBarajar() throws SQLException {
-        crearMazo();
-        mazo.barajar();
-        listaJugadores = new ListaJugadores();
-        listaManos = new ListaManos();
+        try {
+            crearMazo();
+            mazo.barajar();
+            listaJugadores = new ListaJugadores();
+            listaManos = new ListaManos();
+        } catch (ErrorSQL e) {
+            utilidadesES.mostrarln("No se ha podido crear el mazo porque no hay cartas en la base de datos.");
+            utilidadesES.mostrarln("Mensaje de error: " + e.getMsgError());
+            utilidadesES.mostrarln("Código de error: " + e.getCodError());
+        }
     }
     
     /**
@@ -128,7 +140,7 @@ public class ProcesosImpl implements Procesos {
      * en la base de datos.
      * @return El mazo con las cartas.
      */
-    private void crearMazo() throws SQLException {
+    private void crearMazo() throws SQLException, ErrorSQL {
         mazo = dao.recuperarMazo();
     }
     
@@ -189,8 +201,15 @@ public class ProcesosImpl implements Procesos {
         
     }
     
-    private void eliminarJugador() {
-        
+    /**
+     * Elimina las manos de un jugador en la base de datos.
+     * @throws SQLException
+     */
+    private void eliminarJugador() throws SQLException {
+        String nombre = utilidadesES.pideCadena("Nombre del jugador del que eliminar las manos: ").toLowerCase();
+        if (dao.eliminarJugador(nombre) != 1) {
+            utilidadesES.mostrarln("No se ha podido borrar el jugador.");
+        }
     }
 
     private void eliminarJuego() {

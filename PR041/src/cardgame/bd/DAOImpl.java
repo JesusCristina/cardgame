@@ -158,26 +158,24 @@ public class DAOImpl implements DAO {
 
     /**
      * Consulta si existe un jugador de la base de datos.
-     * @param nombre Nombre del jugador.
-     * @return Devuelve el objeto jugador.
-     * @throws ErrorSQL
+     * @param nombre Nombre del jugador a consultar.
+     * @return Devuelve true si existe, false si no existe.
      * @throws SQLException
      */
-    public Jugador existeJugador(String nombre) throws SQLException, ErrorSQL {
-        Jugador jugador = null;
+    public boolean existeJugador(String nombre) throws SQLException {
+        boolean existe = false;
         try {
             getConexion();
             String consulta = "SELECT nombre FROM JUGADORES WHERE nombre LIKE '" + nombre + "'";
             Statement statement = conexion.createStatement();
             ResultSet registros = statement.executeQuery(consulta);
             if (registros.next()) {
-                jugador = new Jugador(nombre);
-            } else
-                throw new ErrorSQL(ErrorSQL.NO_DATA_ERR, "No se han devuelto datos.");
+                existe = true;
+            }
         } finally {
             closeConexion();
         }
-        return jugador;
+        return existe;
     }
 
     /**

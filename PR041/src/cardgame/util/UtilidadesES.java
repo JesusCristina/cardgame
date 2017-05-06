@@ -126,4 +126,40 @@ public class UtilidadesES {
         }
         return respuesta;
     }
+    
+    /**
+     * Método que verifica si una cadena es un número o no.
+     * @param cadena Cadena a verificar.
+     * @return Devuelve true si es un número o false si no lo es.
+     */
+    public boolean esUnNumero(String cadena)
+    {  
+      try  
+      {  
+        double d = Double.parseDouble(cadena);  
+      }  
+      catch(NumberFormatException nfe)  
+      {  
+        return false;  
+      }  
+      return true;  
+    }
+    
+    /**
+     * Método que verifica si una cadena es contiene un número o no.
+     * @param cadena Cadena a verificar.
+     * @return Devuelve true si contiene un número o false si no.
+     */
+    public boolean contieneNumero(String cadena) {
+        // Controla que la cadena no está vacía.
+        if (cadena != null && !cadena.isEmpty()) {
+            // Si encuentra un número en alguna posición de la cadena, devuelve true.
+            for (char c : cadena.toCharArray()) {
+                if (Character.isDigit(c)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

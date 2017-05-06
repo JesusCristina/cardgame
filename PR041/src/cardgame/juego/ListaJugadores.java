@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 /**
  * Clase contenedora que guarda una lista de jugadores.
- * @author Cristina Polo Sánchez.
+ * @author Cristina Polo Sï¿½nchez.
  */
 public class ListaJugadores{
     private LinkedList<Jugador> listaJugadores;
@@ -13,7 +13,7 @@ public class ListaJugadores{
     
     /**
      * Contenedor interno de esta clase en el que se almacena una lista de 
-     * jugadores. El resto de clases trabajarán con "jugador", no directa_
+     * jugadores. El resto de clases trabajarï¿½n con "jugador", no directa_
      * mente con este contenedor.
      */
     public ListaJugadores () {
@@ -32,16 +32,16 @@ public class ListaJugadores{
     
     
     /**
-     * Método que sirve para agregar un nuevo jugador a la lista.
-     * @param jugador Añade un jugador.
+     * Mï¿½todo que sirve para agregar un nuevo jugador a la lista.
+     * @param jugador Aï¿½ade un jugador.
      */
     public void agregarJugador (Jugador jugador) {
         listaJugadores.add(jugador);
     }
     
     /**
-     * Método que sirve para mostrar jugadores.
-     * @param posicion Posición en la que se encuentra el jugador en la lista.
+     * Mï¿½todo que sirve para mostrar jugadores.
+     * @param posicion Posiciï¿½n en la que se encuentra el jugador en la lista.
      * @return Devuelve el jugador.
      */
     public Jugador dameJugador(int posicion) {
@@ -52,8 +52,8 @@ public class ListaJugadores{
     
     /**
      * Se elimina un jugador de la lista. Cada jugador se diferencia de los
-     * demás por la posición que ocupa en la lista.
-     * @param posicion Posición (expresada en un número entero) de un jugador
+     * demï¿½s por la posiciï¿½n que ocupa en la lista.
+     * @param posicion Posiciï¿½n (expresada en un nï¿½mero entero) de un jugador
      * en concreto de la lista de jugadores.
      */
     public void eliminaJugador(int posicion) {
@@ -62,11 +62,23 @@ public class ListaJugadores{
     
     
     /**
-     * Proporciona información sobre el tamaño de la lista de jugadores.
-     * @return Devuelve, en números enteros, el tamaño de la lista de 
+     * Proporciona informaciï¿½n sobre el tamaï¿½o de la lista de jugadores.
+     * @return Devuelve, en nï¿½meros enteros, el tamaï¿½o de la lista de 
      * jugadores.
      */
     public int size() {
         return listaJugadores.size();
+    }
+    
+    /**
+     * Informa si el contenedor contiene o no a un jugador.
+     * @param jugador Jugador proporcionado.
+     * @return Devuelve true si lo contiene, false si no lo contiene.
+     */
+    public boolean contiene(Jugador jugador) {
+        if (listaJugadores.contains(jugador))
+            return true;
+        else
+            return false;
     }
 }

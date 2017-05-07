@@ -3,11 +3,15 @@ package cardgame.procesos;
 import cardgame.bd.DAO;
 import cardgame.bd.ErrorSQL;
 
+import cardgame.juego.Carta;
 import cardgame.juego.Jugador;
 import cardgame.juego.ListaJugadores;
 import cardgame.juego.ListaManos;
 import cardgame.juego.ListaPartidas;
+import cardgame.juego.Mano;
 import cardgame.juego.Mazo;
+import cardgame.juego.Partida;
+
 import cardgame.util.UtilidadesES;
 
 import java.io.IOException;
@@ -196,9 +200,32 @@ public class ProcesosImpl implements Procesos {
     private void jugar() {
         
     }
-
-    private void listarJuegoJugador() {
-        
+    
+    /**
+     * Lista las manos obtenidas por un jugador en cada partida que ha jugado.
+     * @throws SQLException
+     * @throws ErrorSQL
+     */
+    private void listarJuegoJugador() throws SQLException, ErrorSQL {
+        String nombre = utilidadesES.pideCadena("Nombre del jugador a consultar: ").toLowerCase();
+        ListaPartidas partidasJugador = dao.recuperarPartidas(nombre);
+        Partida partida;
+        Carta carta;
+        while (partidasJugador.getPartidas().hasNext()) {
+            partida = partidasJugador.getPartidas().next();
+            utilidadesES.mostrarln("Manos obtenidas en la partida número " + partida.getNumPartida());
+            int numMano = 1;
+            for (Mano mano: partida.getResultado()) {
+                if (mano.getPropietario() == nombre) {
+                    utilidadesES.mostrarln("Mano nº " + numMano);
+                    while (mano.getCartas().hasNext()) {
+                        carta = mano.getCartas().next();
+                        utilidadesES.mostrarln(carta.toString());
+                    }
+                    numMano++;
+                }
+            }
+        }
     }
     
     /**
@@ -207,15 +234,31 @@ public class ProcesosImpl implements Procesos {
      */
     private void eliminarJugador() throws SQLException {
         String nombre = utilidadesES.pideCadena("Nombre del jugador del que eliminar las manos: ").toLowerCase();
-        if (dao.eliminarJugador(nombre) != 1) {
-            utilidadesES.mostrarln("No se ha podido borrar el jugador.");
-        }
+        int manosBorradas = dao.eliminarJugador(nombre);
+        if (manosBorradas == 0) {
+            utilidadesES.mostrarln("No se ha podido borrar las manos de ese jugador.");
+        } else 
+            utilidadesES.mostrarln("Se han eliminado " + manosBorradas + " manos");
     }
-
-    private void eliminarJuego() {
-        
+    
+    /**
+     * Elimina una los datos de una partida determinada
+     * @throws SQLException
+     * @throws IOException
+     */
+    private void eliminarJuego() throws SQLException, IOException {
+        int numPartida = utilidadesES.pideNumero("Partida a eliminar: ");
+        int manosBorradas = dao.eliminarPartida(numPartida);
+        if (manosBorradas == 0) {
+            utilidadesES.mostrarln("No se ha podido borrar esa partida.");
+        } else 
+            utilidadesES.mostrarln("Se han eliminado " + manosBorradas + " manos");
     }
-
+    
+    /**
+     * Informa al usuario que va a salir del juego y guarda las partidas almacenadas.
+     * @throws SQLException
+     */
     private void salir() throws SQLException {
         utilidadesES.mostrarln("Has decidido salir del juego, las partidas se guardarán.");
         dao.insertarPartidas(listaPartidas);

@@ -232,6 +232,7 @@ public class DAOImpl implements DAO {
                     // Cuando hay una nueva mano, la añado al contenedor resultados y creo una nueva Mano
                     if (numMano != registros.getInt("MANOS.id_mano")) {
                         numMano = registros.getInt("MANOS.id_mano");
+                        mano.setPropietario(nombre);
                         resultado.add(mano);
                         mano = new Mano();
                     }
@@ -303,6 +304,7 @@ public class DAOImpl implements DAO {
                     // Cuando hay una nueva mano, la añado al contenedor resultados y creo una nueva Mano
                     if (numMano != registros.getInt("PARTIDAS.id_mano")) {
                         numMano = registros.getInt("PARTIDAS.id_mano");
+                        mano.setPropietario(nombre);
                         resultado.add(mano);
                         mano = new Mano();
                     }
@@ -591,35 +593,57 @@ public class DAOImpl implements DAO {
     /**
      * Elimina las manos de un jugador en la base de datos.
      * @param nombre Nombre del jugador.
-     * @return Devuelve 1 si se ha eliminado, 0 si no se ha podido eliminar.
+     * @return Devuelve el número de manos eliminadas, 0 si no se ha eliminado ninguna.
      * @throws SQLException
      */
     public int eliminarJugador(String nombre) throws SQLException {
-        int jugadorEliminado = 0;
+        int manosEliminadas = 0;
         try {
             getConexion();
-            String delete = "DELETE FROM JUGADORES WHERE nombre LIKE '" + nombre + "'";
+            String consulta = "SELECT id_mano " + 
+            "FROM PARTIDAS " + 
+            "WHERE id_jug = (SELECT id_jug FROM JUGADORES WHERE nombre LIKE '" + nombre + "'";
             Statement statement = conexion.createStatement();
-            jugadorEliminado = statement.executeUpdate(delete);
+            ResultSet registros = statement.executeQuery(consulta);
+            if (registros.next()) {
+                int id = registros.getInt("id_mano");
+                String delete = "DELETE FROM MANOS WHERE id_mano = " + id;
+                manosEliminadas = statement.executeUpdate(delete);
+            }
         } finally {
             closeConexion();
         }
-        return jugadorEliminado;
+        return manosEliminadas;
     }
 
     /**
      * Elimina una partida de la base de datos.
      * @param numPartida Número de la partida.
-     * @return Devuelve 1 si se ha eliminado, 0 si no se ha podido eliminar.
+     * @return Devuelve el número de manos eliminadas, 0 si no se ha eliminado ninguna.
      * @throws SQLException
      */
     public int eliminarPartida(int numPartida) throws SQLException {
+        int manosEliminadas = 0;
         try {
             getConexion();
-            
+            // Consulta las manos a borrar
+            String consulta = "SELECT id_mano " + 
+            "FROM PARTIDAS " + 
+            "WHERE id_partida = " + numPartida;
+            Statement statement = conexion.createStatement();
+            ResultSet registros = statement.executeQuery(consulta);
+            // Borra la partida
+            String deletePartida = "DELETE FROM PARTIDAS WHERE id_partida = " + numPartida;
+            statement.executeUpdate(deletePartida);
+            if (registros.next()) {
+                // Borra las manos
+                int id = registros.getInt("id_mano");
+                String deleteManos = "DELETE FROM MANOS WHERE id_mano = " + id;
+                manosEliminadas = statement.executeUpdate(deleteManos);
+            }
         } finally {
             closeConexion();
         }
-        return 0;
+        return manosEliminadas;
     }
 }

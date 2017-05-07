@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 /**
  * Clase contenedora que guarda una lista de manos.
- * @author Cristina Polo Sánchez.
+ * @author Cristina Polo Sï¿½nchez.
  */
 public class ListaManos {
     private ArrayList<Mano> listaManos;
@@ -13,7 +13,7 @@ public class ListaManos {
     
     /**
      * Contenedor interno de esta clase en el que se almacena una
-     * lista de manos. El resto de clases trabajarán con "mano", no 
+     * lista de manos. El resto de clases trabajarï¿½n con "mano", no 
      * directamente con este contenedor.
      */    
     public ListaManos() {
@@ -30,16 +30,16 @@ public class ListaManos {
     }    
     
     /**
-     * Método que sirve para agregar una nueva mano a la lista.
-     * @param mano Añade una mano.
+     * Mï¿½todo que sirve para agregar una nueva mano a la lista.
+     * @param mano Aï¿½ade una mano.
      */    
     public void agregarMano (Mano mano){
         listaManos.add(mano);
     }
     
     /**
-     * Método que sirve para mostrar manos.
-     * @param posicion Posición en la que se encuentra la mano.
+     * Mï¿½todo que sirve para mostrar manos.
+     * @param posicion Posiciï¿½n en la que se encuentra la mano.
      * @return Devuelve la mano.
      */    
     public Mano dameMano(int posicion) {
@@ -49,8 +49,8 @@ public class ListaManos {
     
     /**
      * Se elimina una mano de la lista. Cada mano se diferencia de las 
-     * demás por la posición que ocupa en la lista.
-     * @param posicion Posición (expresada en un número entero) de una
+     * demï¿½s por la posiciï¿½n que ocupa en la lista.
+     * @param posicion Posiciï¿½n (expresada en un nï¿½mero entero) de una
      * mano en concreto en la lista de manos.
      */    
     public void eilminaMano(int posicion) {
@@ -58,12 +58,12 @@ public class ListaManos {
     }
     
     /**
-     * Proporciona información sobre el tamaño de la lista de manos.
-     * @return Devuelve, en números enteros, el tamaño de la lista de 
+     * Proporciona informaciï¿½n sobre el tamaï¿½o de la lista de manos.
+     * @return Devuelve, en nï¿½meros enteros, el tamaï¿½o de la lista de 
      * manos.
      */    
     public int size() {
         return listaManos.size();
-    }    
+    }
 }
 

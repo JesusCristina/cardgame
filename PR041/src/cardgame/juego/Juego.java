@@ -64,8 +64,8 @@ public class Juego {
     public void ejecutar() {
         int opcion = -1;
         try {
-            menu.mostrarMenu("Bienvenid@ a cardgame");
             do {
+                menu.mostrarMenu("Bienvenid@ a cardgame");
                 opcion = utilidadesES.pideNumero("Elija una opción: ");
                 procesos.procesar(opcion);
             }

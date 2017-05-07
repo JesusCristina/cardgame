@@ -102,9 +102,23 @@
             <value n="allowInput" v="true"/>
             <value n="custom" v="false"/>
             <value n="name" v="Default"/>
-            <value n="targetURL"/>
+            <url n="targetURL" path="src/cardgame/Principal.java"/>
          </hash>
       </hash>
+   </hash>
+   <hash n="oracle.jdevimpl.config.JProjectLibraries">
+      <list n="exportedReferences">
+         <hash>
+            <url n="id" path="../../../AppData/Roaming/JDeveloper/system12.2.1.1.42.160607.2047/o.jdeveloper/ConnectorJ.library"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+      </list>
+      <list n="libraryReferences">
+         <hash>
+            <url n="id" path="../../../AppData/Roaming/JDeveloper/system12.2.1.1.42.160607.2047/o.jdeveloper/ConnectorJ.library"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+      </list>
    </hash>
    <hash n="oracle.jdevimpl.config.JProjectPaths">
       <url n="outputDirectory" path="classes/"/>

@@ -184,6 +184,31 @@ public class DAOImpl implements DAO {
     }
 
     /**
+     * Recupera el número de la ultima partida insertada en la base
+     * de datos.
+     * @return Devuelve el número de la última partida insertada,
+     * si no se había insertado ninguna antes, devuelve 1, si
+     * ha habido algún tipo de error, devuelve 0.
+     * @throws SQLException
+     */
+    public int ultimaPartida() throws SQLException {
+        int numPartida = 0;
+        try {
+            getConexion();
+            String consulta = "SELECT MAX(id_partida) FROM PARTIDAS";
+            Statement statement = conexion.createStatement();
+            ResultSet registros = statement.executeQuery(consulta);
+            if (registros.next())
+                numPartida = registros.getInt("id_partida");
+            else
+                numPartida = 1;
+        } finally {
+            closeConexion();
+        }
+        return numPartida;
+    }
+    
+    /**
      * Recupera todas las partidas almacenadas en la base de datos.
      * @return Devuelve un contenedor con las partidas recuperadas.
      * @throws SQLException
@@ -395,38 +420,30 @@ public class DAOImpl implements DAO {
      * @throws SQLException
      */
     public int insertarPartidas(ListaPartidas listaPartidas) throws SQLException {
+        int partidaInsertadas = 0;
+        Partida partida;
         try {
-            getConexion();
-            
-        } finally {
-            closeConexion();
-        }
-        return 0;
-    }
-
-    /**
-     * Inserta una partida en la base de datos.
-     * @param partida Partida a almacenar.
-     * @return Devuelve 1 si se ha insertado, 0 si no se ha podido insertar.
-     * @throws SQLException
-     */
-    public int insertarPartidas(Partida partida) throws SQLException {
-        int partidaInsertada = 0;
-        try {
+            /*
             getConexion();
             String insert = "INSERT INTO PARTIDAS VALUES (?,?,?)";
             PreparedStatement statement = conexion.prepareStatement(insert);
-            /*
+            while (listaPartidas.getPartidas().hasNext()) {
+                partida = listaPartidas.getPartidas().next();
+                statement.setInt(1, ultimaPartida());
+                for (Mano mano: partida.getResultado()) {
+                    statement.setInt(1, ultimaPartida());
+                }
+            }
             for (Mano mano: partida.getResultado()) {
                 
             }
             */
             // statement.setInt(1, partida.getNumPartida());
-            partidaInsertada += statement.executeUpdate();
+            // partidaInsertadas += statement.executeUpdate();
         } finally {
             closeConexion();
         }
-        return partidaInsertada;
+        return partidaInsertadas;
     }
 
     /**
@@ -489,7 +506,7 @@ public class DAOImpl implements DAO {
         Statement statement = conexion.createStatement();
         ResultSet registros = statement.executeQuery(consulta);
         if (registros.next())
-            ultimoJugador = registros.getInt("id_jug");
+            ultimoJugador = registros.getInt("MAX(id_jug)");
         else
             ultimoJugador = 0;
         return ultimoJugador;
@@ -602,7 +619,7 @@ public class DAOImpl implements DAO {
             getConexion();
             String consulta = "SELECT id_mano " + 
             "FROM PARTIDAS " + 
-            "WHERE id_jug = (SELECT id_jug FROM JUGADORES WHERE nombre LIKE '" + nombre + "'";
+            "WHERE id_jug = (SELECT id_jug FROM JUGADORES WHERE nombre LIKE '" + nombre + "')";
             Statement statement = conexion.createStatement();
             ResultSet registros = statement.executeQuery(consulta);
             if (registros.next()) {
@@ -630,16 +647,18 @@ public class DAOImpl implements DAO {
             String consulta = "SELECT id_mano " + 
             "FROM PARTIDAS " + 
             "WHERE id_partida = " + numPartida;
-            Statement statement = conexion.createStatement();
-            ResultSet registros = statement.executeQuery(consulta);
+            Statement statement1 = conexion.createStatement();
+            Statement statement2 = conexion.createStatement();
+            Statement statement3 = conexion.createStatement();
+            ResultSet registros = statement1.executeQuery(consulta);
             // Borra la partida
             String deletePartida = "DELETE FROM PARTIDAS WHERE id_partida = " + numPartida;
-            statement.executeUpdate(deletePartida);
+            statement2.executeUpdate(deletePartida);
             if (registros.next()) {
                 // Borra las manos
                 int id = registros.getInt("id_mano");
                 String deleteManos = "DELETE FROM MANOS WHERE id_mano = " + id;
-                manosEliminadas = statement.executeUpdate(deleteManos);
+                manosEliminadas = statement3.executeUpdate(deleteManos);
             }
         } finally {
             closeConexion();

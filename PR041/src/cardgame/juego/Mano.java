@@ -17,6 +17,10 @@ public class Mano {
      */
     private String propietario;
     
+    public Mano () {
+        cartas = new LinkedList<Carta>();
+    }
+    
     /**
      * Devuelve las cartas de la mano.
      * @return Las cartas de la mano.

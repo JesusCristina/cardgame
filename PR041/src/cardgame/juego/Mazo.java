@@ -41,8 +41,10 @@ public class Mazo {
      * @return
      */
     public Carta dameLaUltimaCarta () {
-        return listaCartas.get(listaCartas.size() -1);
-        }
+        Carta carta = listaCartas.get(listaCartas.size() -1);
+        listaCartas.remove(listaCartas.size() -1);
+        return carta;
+    }
     
     /**
      * Elimina una carta del contenedor.

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Encapsula el concepto de jugador en el juego.
- * @author Cristina Polo Sánchez.
+ * @author Cristina Polo Sï¿½nchez.
  */
 public class Jugador {
     private String nombre;
@@ -20,9 +20,9 @@ public class Jugador {
     }
 
     /**
-     * Devuelve la definición del jugador; los jugadores se distinguen entre sí por el
+     * Devuelve la definiciï¿½n del jugador; los jugadores se distinguen entre sï¿½ por el
      * nombre.
-     * @return La definición del jugador (nombre).
+     * @return La definiciï¿½n del jugador (nombre).
      */    
     public String toString() { 
         return nombre;
@@ -37,14 +37,14 @@ public class Jugador {
     }
 
     /**
-     * Devuelve información sobre la mano, de qué mano se trata.
+     * Devuelve informaciï¿½n sobre la mano, de quï¿½ mano se trata.
      * @return La mano.
      */
     public Mano getMano() {
         return mano;
     }
 
-    /** El jugador cogerá la última carta añadida al mazo (la que está arriba del todo)
+    /** El jugador cogerï¿½ la ï¿½ltima carta aï¿½adida al mazo (la que estï¿½ arriba del todo)
      * y la almacena en su mano.
      * @param mazo El mazo, de donde toma la carta.
      */
@@ -56,10 +56,11 @@ public class Jugador {
     
     
     /**
-     * El jugador cogerá tantas cartas del mazo como se especifique.
-     * @param veces Número de veces que el jugador cogerá una carta.
+     * El jugador cogerï¿½ tantas cartas del mazo como se especifique.
+     * @param veces Nï¿½mero de veces que el jugador cogerï¿½ una carta.
      */    
     public void cogerCarta (Mazo mazo, int veces) {
+        mano = new Mano();
         for (int i=0; i<= veces; i++) {
                 Carta carta = mazo.dameLaUltimaCarta();
                 mano.agregarCarta(carta);
@@ -68,14 +69,24 @@ public class Jugador {
     
     
     /**
-     * El jugador mostrará su mano.
+     * El jugador mostrarï¿½ su mano.
      */
     public void mostrarMano(){
         while (mano.getCartas().hasNext()){
             Carta carta = mano.getCartas().next();
             System.out.println(carta.toString());
-            }
-    } 
+        }
+    }
+    
+    public Mazo dejarCartasMano(Mazo mazo) {
+        Carta carta;
+        while (mano.getCartas().hasNext()) {
+            carta = mano.getCartas().next();
+            mazo.agregarCarta(carta);
+        }
+        this.mano = null;
+        return mazo;
+    }
 }
 
 

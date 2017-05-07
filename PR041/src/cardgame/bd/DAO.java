@@ -56,6 +56,16 @@ public interface DAO {
        */
     public boolean existeJugador(String nombre) throws SQLException;
 
+    /**
+     * Recupera el número de la ultima partida insertada en la base
+     * de datos.
+     * @return Devuelve el número de la última partida insertada,
+     * si no se había insertado ninguna antes, devuelve 1, si
+     * ha habido algún tipo de error, devuelve 0.
+     * @throws SQLException
+     */
+    public int ultimaPartida() throws SQLException;
+
      /**
       * Recupera todas las partidas almacenadas en la base de datos.
       * @return Devuelve un contenedor con las partidas recuperadas.
@@ -88,14 +98,6 @@ public interface DAO {
      * @throws SQLException
      */
     public int insertarPartidas(ListaPartidas listaPartidas) throws SQLException;
-    
-    /**
-     * Inserta una partida en la base de datos.
-     * @param partida Partida a almacenar.
-     * @return Devuelve 1 si se ha insertado, 0 si no se ha podido insertar.
-     * @throws SQLException
-     */
-    public int insertarPartidas(Partida partida) throws SQLException;
     
      /**
       * Inserta una lista de jugadores en la base de datos.

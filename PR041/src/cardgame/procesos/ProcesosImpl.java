@@ -2,7 +2,6 @@ package cardgame.procesos;
 
 import cardgame.bd.DAO;
 import cardgame.bd.ErrorSQL;
-
 import cardgame.juego.Carta;
 import cardgame.juego.Jugador;
 import cardgame.juego.ListaJugadores;
@@ -11,13 +10,9 @@ import cardgame.juego.ListaPartidas;
 import cardgame.juego.Mano;
 import cardgame.juego.Mazo;
 import cardgame.juego.Partida;
-
 import cardgame.util.UtilidadesES;
-
 import java.io.IOException;
-
 import java.sql.SQLException;
-
 import java.util.LinkedList;
 
 /**
@@ -71,7 +66,8 @@ public class ProcesosImpl implements Procesos {
 
     /**
      * Método que procesa una opción determinada.
-     * @param opcion Opción a procesar
+     * @param opcion Opción a procesar.
+     * @throws IOException
      */
     @Override
     public void procesar(int opcion) throws IOException {
@@ -126,17 +122,20 @@ public class ProcesosImpl implements Procesos {
     
     /**
      * Crea el mazo y lo baraja.
-     * @throws ErrorSQL
+     * @throws SQLException
      */
     private void crearMazoyBarajar() throws SQLException {
         try {
             crearMazo();
             mazo.barajar();
+            /*
+             * Cada vez que se crea un mazo y se baraja, se entiende que
+             * empieza otra partida, por tanto, se vuelve a inicializar el
+             * contenedor de manos.
+             */
             listaManos = new ListaManos();
         } catch (ErrorSQL e) {
             utilidadesES.mostrarln("No se ha podido crear el mazo porque no hay cartas en la base de datos.");
-            utilidadesES.mostrarln("Mensaje de error: " + e.getMsgError());
-            utilidadesES.mostrarln("Código de error: " + e.getCodError());
         }
     }
     
@@ -144,6 +143,8 @@ public class ProcesosImpl implements Procesos {
      * Crea un mazo que contiene las cartas almacenadas
      * en la base de datos.
      * @return El mazo con las cartas.
+     * @throws ErrorSQL
+     * @throws SQLException
      */
     private void crearMazo() throws SQLException, ErrorSQL {
         mazo = dao.recuperarMazo();
@@ -153,11 +154,18 @@ public class ProcesosImpl implements Procesos {
     }
     
     /**
-     * Pregunta cuántos jugadores quiere establecer para el
+     * Pregunta cuántos jugadores se quieren establecer para el
      * juego de cartas.
+     * @throws IOException
+     * @throws ErrorSQL
+     * @throws SQLException
      */
     private void establecerJugadores() throws IOException, SQLException, ErrorSQL {
         utilidadesES.mostrarln("¿Cuántos jugadores quieres establecer? (2 o 4)");
+        /*
+         * Cada vez que se establecen los jugadores en el juego, se
+         * vuelve a incializar el contenedor de jugadores.
+         */
         listaJugadores = new ListaJugadores();
         int opcion;
         do {
@@ -172,19 +180,25 @@ public class ProcesosImpl implements Procesos {
     /**
      * Agrega los jugadores al contenedor de jugadores del juego.
      * @param jugadoresaAgregar Número máximo de jugadores establecido.
-     * @throws SQLException
      * @throws ErrorSQL
+     * @throws SQLException
      */
     private void agregarJugadores(int jugadoresaAgregar) throws SQLException, ErrorSQL {
         try {
+            /*
+             * Agrega jugadores al contenedor mientras no se exceda el
+             * número de jugadores establecido.
+             */
             for (int i = 1; i <= jugadoresaAgregar; i++) {
                 // Se pedirá el nombre del jugador y se transformará a minúsculas.
                 String nombre = utilidadesES.pideCadena("Nombre del jugador: ").toLowerCase();
                 if (utilidadesES.esUnNumero(nombre)) {
                     utilidadesES.mostrarln("Un nombre no puede estar formado sólo por números.");
+                    // Controla que i no aumente y termine el bucle.
                     i--;
                 } else if (utilidadesES.contieneNumero(nombre)) {
                     utilidadesES.mostrarln("Un nombre sólo puede estar formado por letras.");
+                    // Controla que i no aumente y termine el bucle.
                     i--;
                 } else {
                     Jugador jugador = new Jugador(nombre);
@@ -211,8 +225,9 @@ public class ProcesosImpl implements Procesos {
     }
     
     /**
-     * Los jugadores cogen cartas del mazo, las guardan en sus manos y muestran las cartas obtenidas.
-     * Cuando se termina de jugar, se almacenan los resultados en la base de datos.
+     * Los jugadores cogen cartas del mazo, las guardan en sus manos
+     * y muestran las cartas obtenidas. Cuando se termina de jugar,
+     * se almacenan los resultados en la base de datos.
      * @throws SQLException
      * @throws ErrorSQL
      */

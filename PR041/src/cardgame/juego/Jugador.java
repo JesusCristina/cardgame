@@ -61,7 +61,7 @@ public class Jugador {
      */    
     public void cogerCarta (Mazo mazo, int veces) {
         mano = new Mano();
-        for (int i=0; i<= veces; i++) {
+        for (int i = 1; i <= veces; i++) {
                 Carta carta = mazo.dameLaUltimaCarta();
                 mano.agregarCarta(carta);
             }
@@ -72,18 +72,13 @@ public class Jugador {
      * El jugador mostrar� su mano.
      */
     public void mostrarMano(){
-        while (mano.getCartas().hasNext()){
-            Carta carta = mano.getCartas().next();
+        for (Carta carta: mano.getCartas())
             System.out.println(carta.toString());
-        }
     }
     
     public Mazo dejarCartasMano(Mazo mazo) {
-        Carta carta;
-        while (mano.getCartas().hasNext()) {
-            carta = mano.getCartas().next();
+        for (Carta carta: mano.getCartas())
             mazo.agregarCarta(carta);
-        }
         this.mano = null;
         return mazo;
     }

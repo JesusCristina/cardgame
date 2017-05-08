@@ -191,7 +191,7 @@ public class ProcesosImpl implements Procesos {
                     listaJugadores.agregarJugador(jugador);
                     // Si el jugador ya ha jugado antes, muestra un mensaje de bienvenida.
                     if (dao.existeJugador(nombre))
-                        utilidadesES.mostrarln("Hola, " + nombre + " bienvenid@ de nuevo.");
+                        utilidadesES.mostrarln("Hola " + nombre + ", bienvenid@ de nuevo.");
                     /*
                      * Sólo inserta el jugador en la base de datos si se ha
                      * agregado al contenedor de jugadores y si no existe ya
@@ -217,10 +217,7 @@ public class ProcesosImpl implements Procesos {
      * @throws ErrorSQL
      */
     private void jugar() throws SQLException, ErrorSQL {
-        Jugador jugador;
-        Carta carta;
-        while (listaJugadores.getJugadores().hasNext()) {
-            jugador = listaJugadores.getJugadores().next();
+        for (Jugador jugador: listaJugadores.getListaJugadores()) {
             utilidadesES.mostrarln("El jugador " + jugador.getNombre() + " ha obtenido los siguientes resultados:");
             if (listaJugadores.size() == 2) {
                 for (int i = 1; i <= 5; i++) {
@@ -236,11 +233,9 @@ public class ProcesosImpl implements Procesos {
             else if (listaJugadores.size() == 4) {
                 for (int i = 1; i <= 2; i++) {
                     jugador.cogerCarta(mazo, 5);
+                    jugador.getMano().setPropietario(jugador.getNombre());
                     utilidadesES.mostrarln("Mano nº: " + i);
-                    while (jugador.getMano().getCartas().hasNext()) {
-                        carta = jugador.getMano().getCartas().next();
-                        utilidadesES.mostrarln(carta.toString());
-                    }
+                    jugador.mostrarMano();
                     listaManos.agregarMano(jugador.getMano());
                     mazo = jugador.dejarCartasMano(mazo);
                     mazo.barajar();
@@ -258,23 +253,19 @@ public class ProcesosImpl implements Procesos {
     private void listarJuegoJugador() throws SQLException, ErrorSQL {
         String nombre = utilidadesES.pideCadena("Nombre del jugador a consultar: ").toLowerCase();
         ListaPartidas partidasJugador = dao.recuperarPartidas(nombre);
-        Partida partida;
-        Carta carta;
-        while (partidasJugador.getPartidas().hasNext()) {
-            partida = partidasJugador.getPartidas().next();
-            utilidadesES.mostrarln("Manos obtenidas en la partida número " + partida.getNumPartida());
-            int numMano = 1;
-            for (Mano mano: partida.getResultado()) {
-                if (mano.getPropietario() == nombre) {
+        if (partidasJugador.getListaPartidas().get(0).getNumPartida() != 0) {
+            for (Partida partida : partidasJugador.getListaPartidas()) {
+                utilidadesES.mostrarln("Manos obtenidas en la partida número " + partida.getNumPartida());
+                int numMano = 1;
+                for (Mano mano : partida.getResultado()) {
                     utilidadesES.mostrarln("Mano nº " + numMano);
-                    while (mano.getCartas().hasNext()) {
-                        carta = mano.getCartas().next();
+                    for (Carta carta : mano.getCartas())
                         utilidadesES.mostrarln(carta.toString());
-                    }
                     numMano++;
                 }
             }
-        }
+        } else
+            utilidadesES.mostrarln("Ese jugador no ha jugado todavía.");
     }
     
     /**
@@ -284,7 +275,7 @@ public class ProcesosImpl implements Procesos {
     private void eliminarJugador() throws SQLException {
         String nombre = utilidadesES.pideCadena("Nombre del jugador del que eliminar las manos: ").toLowerCase();
         int manosBorradas = dao.eliminarJugador(nombre);
-        if (manosBorradas == 0) {
+        if (manosBorradas != 0) {
             utilidadesES.mostrarln("Se han eliminado " + manosBorradas + " manos");
         } else 
             utilidadesES.mostrarln("No se ha podido borrar las manos de ese jugador.");
@@ -299,22 +290,16 @@ public class ProcesosImpl implements Procesos {
         int numPartida = utilidadesES.pideNumero("Partida a eliminar: ");
         int manosBorradas = dao.eliminarPartida(numPartida);
         if (manosBorradas != 0) {
-            utilidadesES.mostrarln("Se han eliminado " + manosBorradas + " manos");
+            utilidadesES.mostrarln("Se han eliminado " + manosBorradas + " manos de la partida nº: " + numPartida);
         } else 
             utilidadesES.mostrarln("No se ha podido borrar esa partida.");
     }
     
     /**
-     * Informa al usuario que va a salir del juego y guarda las partidas almacenadas.
-     * @throws SQLException
+     * Informa al usuario que va a salir del juego.
      */
-    private void salir() throws SQLException {
-        utilidadesES.mostrarln("Has decidido salir del juego, las partidas se guardarán.");
-        int partidasInsertadas = dao.insertarPartidas(listaPartidas);
-        if (partidasInsertadas != 0)
-            utilidadesES.mostrarln("Se han insertado " + partidasInsertadas + " partidas en la base de datos.");
-        else
-            utilidadesES.mostrarln("No se ha podido insertar ninguna partida.");
+    private void salir() {
+        utilidadesES.mostrarln("Has decidido salir del juego.");
     }
 
     /**
@@ -322,12 +307,9 @@ public class ProcesosImpl implements Procesos {
      * @return Devuelve el contenedor con los jugadores de la partida.
      */
     private LinkedList<Jugador> agregarJugadoresPartida() {
-        LinkedList<Jugador> jugadores = null;
-        Jugador jugador;
-        while (listaJugadores.getJugadores().hasNext()) {
-            jugador = listaJugadores.getJugadores().next();
+        LinkedList<Jugador> jugadores = new LinkedList<Jugador>();
+        for (Jugador jugador: listaJugadores.getListaJugadores())
             jugadores.add(jugador);
-        }
         return jugadores;
     }
 
@@ -336,12 +318,10 @@ public class ProcesosImpl implements Procesos {
      * @return Devuelve el contenedor con los resultados de la partida.
      */
     private LinkedList<Mano> agregarResultadoPartida() {
-        LinkedList<Mano> resultado = null;
-        Mano mano;
-        while (listaManos.getManos().hasNext()) {
-            mano = listaManos.getManos().next();
+        LinkedList<Mano> resultado = new LinkedList<Mano>();
+        for (Mano mano: listaManos.getListaManos())
             resultado.add(mano);
-        }
+        listaManos = new ListaManos();
         return resultado;
     }
     
@@ -354,13 +334,21 @@ public class ProcesosImpl implements Procesos {
         Partida partida;
         int manosInsertadas = dao.insertarManos(listaManos);
         if (manosInsertadas != 0) {
+            manosInsertadas = manosInsertadas / listaJugadores.size();
             utilidadesES.mostrarln("Se han insertado " + manosInsertadas + " manos en la base de datos.");
         } else 
             utilidadesES.mostrarln("No se han podido insertar las manos de esta partida.");
         LinkedList<Jugador> jugadores = agregarJugadoresPartida();
         LinkedList<Mano> resultado = agregarResultadoPartida();
         if (jugadores != null && resultado != null) {
-            partida = new Partida(dao.ultimaPartida(), jugadores, resultado);
+            int numPartida = dao.ultimaPartida() + 1;
+            partida = new Partida(numPartida, jugadores, resultado);
+            utilidadesES.mostrarln("Finalizada la partida nº " + numPartida + ".");
+            int partidaInsertada = dao.insertarPartida(partida);
+            if (partidaInsertada != 0)
+                utilidadesES.mostrarln("Se ha insertado la partida en la base de datos.");
+            else
+                utilidadesES.mostrarln("No se ha podido insertar ninguna partida.");
             listaPartidas.agregarPartida(partida);
         } else
             utilidadesES.mostrarln("No se ha podido almacenar la partida.");

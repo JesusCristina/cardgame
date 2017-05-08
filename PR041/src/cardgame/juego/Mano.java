@@ -20,14 +20,6 @@ public class Mano {
     public Mano () {
         cartas = new LinkedList<Carta>();
     }
-    
-    /**
-     * Devuelve las cartas de la mano.
-     * @return Las cartas de la mano.
-     */
-    public Iterator<Carta> getCartas() {
-        return cartas.iterator();
-    }
 
     public void agregarCarta (Carta carta) {
         cartas.add(carta);
@@ -40,5 +32,9 @@ public class Mano {
 
     public void setPropietario(String propietario) {
         this.propietario = propietario;
+    }
+
+    public LinkedList<Carta> getCartas() {
+        return cartas;
     }
 }

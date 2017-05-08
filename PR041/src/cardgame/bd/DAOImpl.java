@@ -199,7 +199,7 @@ public class DAOImpl implements DAO {
             Statement statement = conexion.createStatement();
             ResultSet registros = statement.executeQuery(consulta);
             if (registros.next())
-                numPartida = registros.getInt("id_partida");
+                numPartida = registros.getInt("MAX(id_partida)");
             else
                 numPartida = 1;
         } finally {
@@ -305,6 +305,10 @@ public class DAOImpl implements DAO {
                 LinkedList<Jugador> listaJugadores = new LinkedList<Jugador>();
                 LinkedList<Mano> resultado = new LinkedList<Mano>();
                 Mano mano = new Mano();
+                // Agrego el jugador a la lista de jugadores
+                String nombre = registros.getString("JUGADORES.nombre");
+                Jugador jugador = new Jugador(nombre);
+                listaJugadores.add(jugador);
                 // Variable que sirve para controlar cuando hay una nueva partida
                 int numPartida = registros.getInt("PARTIDAS.id_partida");
                 // Variable que sirve para controlar cuando hay una nueva mano
@@ -316,18 +320,12 @@ public class DAOImpl implements DAO {
                     // Declaración de variables
                     String palo = registros.getString("CARTAS.palo");
                     String valor = registros.getString("CARTAS.valor");
-                    String nombre = registros.getString("JUGADORES.nombre");
                     // Se crea una carta con el palo y el valor devuelto por la consulta SQL
                     Carta carta = new Carta(palo, valor);
                     // Agrego la carta a la mano
                     mano.agregarCarta(carta);
-                    // Agrego jugadores al contenedor de jugadores controlando si hay duplicados
-                    if (!listaJugadores.contains(nombre) || listaJugadores.isEmpty()) {
-                        Jugador jugador = new Jugador(nombre);
-                        listaJugadores.add(jugador);
-                    }
                     // Cuando hay una nueva mano, la añado al contenedor resultados y creo una nueva Mano
-                    if (numMano != registros.getInt("PARTIDAS.id_mano")) {
+                    if (numMano != registros.getInt("PARTIDAS.id_mano") || registros.isLast()) {
                         numMano = registros.getInt("PARTIDAS.id_mano");
                         mano.setPropietario(nombre);
                         resultado.add(mano);
@@ -335,8 +333,8 @@ public class DAOImpl implements DAO {
                     }
                     // Cuando hay una nueva partida, guardo un objeto Partida en el contenedor de partidas
                     if (numPartida != registros.getInt("PARTIDAS.id_partida") || registros.isLast()) {
-                        numPartida = registros.getInt("PARTIDAS.id_partida");
                         Partida partida = new Partida(numPartida, listaJugadores, resultado);
+                        numPartida = registros.getInt("PARTIDAS.id_partida");
                         listaPartidas.agregarPartida(partida);
                         // Reinicio los buffers de datos
                         listaJugadores = new LinkedList<Jugador>();
@@ -352,98 +350,67 @@ public class DAOImpl implements DAO {
     }
 
     /**
-     * Recupera una partida de la base de datos.
-     * @param numPartida Número de partida.
-     * @return Devuelve un objeto partida con los datos almacenados.
+     * Inserta una partida en la base de datos.
+     * @param partida Partida a insertar
+     * @return Devuelve 1 si se ha podido insertar, 0 si no.
      * @throws ErrorSQL
      * @throws SQLException
      */
-    public Partida recuperarPartida(int numPartida) throws SQLException, ErrorSQL {
-        Partida partida = null;
+    public int insertarPartida(Partida partida) throws SQLException, ErrorSQL {
+        int partidaInsertada = 0;
         try {
-            getConexion();
-            String consulta = "SELECT MANOS.id_mano, CARTAS.valor, CARTAS.palo, JUGADORES.nombre, PARTIDAS.id_partida " +
-                "FROM MANOS " +
-                "LEFT JOIN PARTIDAS ON PARTIDAS.id_mano = MANOS.id_mano " +
-                "LEFT JOIN CARTAS ON CARTAS.id_carta = MANOS.id_carta " +
-                "LEFT JOIN JUGADORES ON JUGADORES.id_jug = PARTIDAS.id_jug " +
-                "WHERE PARTIDAS.id_partida = " + numPartida + " " +
-                "ORDER BY PARTIDAS.id_mano";
-            Statement statement = conexion.createStatement();
-            ResultSet registros = statement.executeQuery(consulta);
-            // Compruebo que se han devuelto datos
-            if (registros.next()) {
-                // Declaro e inicializo los objetos que servirán de buffer para añadir datos a la partida
-                LinkedList<Jugador> listaJugadores = new LinkedList<Jugador>();
-                LinkedList<Mano> resultado = new LinkedList<Mano>();
-                Mano mano = new Mano();
-                // Variable que sirve para controlar cuando hay una nueva mano
-                int numMano = registros.getInt("MANOS.id_mano");
-                // Devuelvo el cursor del ResultSet a su posición inicial
-                registros.beforeFirst();
-                // Bucle encargado de añadir datos a los contenedores
-                while (registros.next()) {
-                    // Declaración de variables
-                    String palo = registros.getString("CARTAS.palo");
-                    String valor = registros.getString("CARTAS.valor");
-                    String nombre = registros.getString("JUGADORES.nombre");
-                    // Se crea una carta con el palo y el valor devuelto por la consulta SQL
-                    Carta carta = new Carta(palo, valor);
-                    // Agrego la carta a la mano
-                    mano.agregarCarta(carta);
-                    // Agrego jugadores al contenedor de jugadores controlando si hay duplicados
-                    if (!listaJugadores.contains(nombre) || listaJugadores.isEmpty()) {
-                        Jugador jugador = new Jugador(nombre);
-                        listaJugadores.add(jugador);
-                    }
-                    // Cuando hay una nueva mano, la añado al contenedor resultados y creo una nueva Mano
-                    if (numMano != registros.getInt("MANOS.id_mano")) {
-                        numMano = registros.getInt("MANOS.id_mano");
-                        resultado.add(mano);
-                        mano = new Mano();
-                    }
-                }
-                // Creo el objeto partida con los datos almacenados
-                partida = new Partida(numPartida, listaJugadores, resultado);
-            } else
-                throw new ErrorSQL(ErrorSQL.NO_DATA_ERR, "No se han devuelto datos.");
-        } finally {
-            closeConexion();
-        }
-        return partida;
-    }
-
-    /**
-     * Inserta una lista de partidas en la base de datos.
-     * @param listaPartidas Contenedor con las partidas.
-     * @return Devuelve el número de registros insertados.
-     * @throws SQLException
-     */
-    public int insertarPartidas(ListaPartidas listaPartidas) throws SQLException {
-        int partidaInsertadas = 0;
-        Partida partida;
-        try {
-            /*
             getConexion();
             String insert = "INSERT INTO PARTIDAS VALUES (?,?,?)";
             PreparedStatement statement = conexion.prepareStatement(insert);
-            while (listaPartidas.getPartidas().hasNext()) {
-                partida = listaPartidas.getPartidas().next();
-                statement.setInt(1, ultimaPartida());
-                for (Mano mano: partida.getResultado()) {
-                    statement.setInt(1, ultimaPartida());
-                }
-            }
+            statement.setInt(1, partida.getNumPartida());
             for (Mano mano: partida.getResultado()) {
-                
+                statement.setInt(2, averiguarIdJugador(mano.getPropietario()));
+                statement.setInt(3, ultimaManoPartidas() + 1);
+                statement.executeUpdate();
+                partidaInsertada = 1;
             }
-            */
-            // statement.setInt(1, partida.getNumPartida());
-            // partidaInsertadas += statement.executeUpdate();
         } finally {
             closeConexion();
         }
-        return partidaInsertadas;
+        return partidaInsertada;
+    }
+    
+    /**
+     * Devuelve el número de la última mano registrada en la
+     * tabla PARTIDAS de la base de datos.
+     * @return Número de la última mano.
+     * @throws SQLException
+     */
+    private int ultimaManoPartidas() throws SQLException {
+        int idMano = 0;
+        String consulta = "SELECT MAX(id_mano) FROM PARTIDAS";
+        Statement statement = conexion.createStatement();
+        ResultSet registros = statement.executeQuery(consulta);
+        if (registros.next())
+            idMano = registros.getInt("MAX(id_mano)");
+        else
+            idMano = 0;
+        return idMano;
+    }
+    
+    /**
+     * Devuelve el ID en base de datos de un jugador
+     * a través de su nombre.
+     * @param nombre Nombre del jugador.
+     * @return ID del jugador.
+     * @throws SQLException
+     * @throws ErrorSQL
+     */
+    private int averiguarIdJugador(String nombre) throws SQLException, ErrorSQL {
+        int idJugador = 0;
+        String consulta = "SELECT id_jug FROM JUGADORES WHERE nombre LIKE '" + nombre + "'";
+        Statement statement = conexion.createStatement();
+        ResultSet registros = statement.executeQuery(consulta);
+        if (registros.next())
+            idJugador = registros.getInt("id_jug");
+        else
+            throw new ErrorSQL(ErrorSQL.NO_DATA_ERR, "No se han devuelto datos.");
+        return idJugador;
     }
 
     /**
@@ -459,8 +426,7 @@ public class DAOImpl implements DAO {
             getConexion();
             String insert = "INSERT INTO JUGADORES VALUES (?,?)";
             PreparedStatement statement = conexion.prepareStatement(insert);
-            while(listaJugadores.getJugadores().hasNext()) {
-                Jugador jugador = listaJugadores.getJugadores().next();
+            for (Jugador jugador: listaJugadores.getListaJugadores()) {
                 statement.setInt(1, ultimoJugador() + 1);
                 statement.setString(2, jugador.getNombre());
                 jugadoresInsertados += statement.executeUpdate();
@@ -523,13 +489,11 @@ public class DAOImpl implements DAO {
         int manosInsertadas = 0;
         try {
             getConexion();
-            String insert = "INSERT INTO MANO VALUES (?,?)";
+            String insert = "INSERT INTO MANOS VALUES (?,?)";
             PreparedStatement statement = conexion.prepareStatement(insert);
-            while(listaManos.getManos().hasNext()) {
-                Mano mano = listaManos.getManos().next();
+            for (Mano mano: listaManos.getListaManos()) {
                 statement.setInt(1, ultimaMano() + 1);
-                while(mano.getCartas().hasNext()) {
-                    Carta carta = mano.getCartas().next();
+                for (Carta carta: mano.getCartas()) {
                     statement.setInt(2, averiguarIdCarta(carta));
                     manosInsertadas += statement.executeUpdate();
                 }
@@ -538,31 +502,6 @@ public class DAOImpl implements DAO {
             closeConexion();
         }
         return manosInsertadas;
-    }
-    
-    /**
-     * Inserta una mano en la base de datos.
-     * @param mano Mano a insertar.
-     * @return Devuelve 1 si se ha insertado, 0 si no se ha podido insertar.
-     * @throws ErrorSQL
-     * @throws SQLException
-     */
-    public int insertarManos(Mano mano) throws SQLException, ErrorSQL {
-        int manoInsertada = 0;
-        try {
-            getConexion();
-            String insert = "INSERT INTO MANO VALUES (?,?)";
-            PreparedStatement statement = conexion.prepareStatement(insert);
-            statement.setInt(1, ultimaMano() + 1);
-            while(mano.getCartas().hasNext()) {
-                Carta carta = mano.getCartas().next();
-                statement.setInt(2, averiguarIdCarta(carta));
-                manoInsertada += statement.executeUpdate();
-            }
-        } finally {
-            closeConexion();
-        }
-        return manoInsertada;
     }
     
     /**
@@ -578,7 +517,7 @@ public class DAOImpl implements DAO {
         Statement statement = conexion.createStatement();
         ResultSet registros = statement.executeQuery(consulta);
         if (registros.next())
-            ultimaMano = registros.getInt("id_mano");
+            ultimaMano = registros.getInt("MAX(id_mano)");
         else
             ultimaMano = 0;
         return ultimaMano;
@@ -597,7 +536,7 @@ public class DAOImpl implements DAO {
         String palo = carta.getPalo();
         String valor = carta.getValor();
         String consulta = "SELECT id_carta FROM CARTAS " +
-            "WHERE palo LIKE " + palo + " AND valor LIKE " + valor;
+            "WHERE palo LIKE '" + palo + "' AND valor LIKE '" + valor + "'";
         Statement statement = conexion.createStatement();
         ResultSet registros = statement.executeQuery(consulta);
         if (registros.next())
@@ -620,12 +559,13 @@ public class DAOImpl implements DAO {
             String consulta = "SELECT id_mano " + 
             "FROM PARTIDAS " + 
             "WHERE id_jug = (SELECT id_jug FROM JUGADORES WHERE nombre LIKE '" + nombre + "')";
-            Statement statement = conexion.createStatement();
-            ResultSet registros = statement.executeQuery(consulta);
-            if (registros.next()) {
+            Statement statement1 = conexion.createStatement();
+            Statement statement2 = conexion.createStatement();
+            ResultSet registros = statement1.executeQuery(consulta);
+            while (registros.next()) {
                 int id = registros.getInt("id_mano");
                 String delete = "DELETE FROM MANOS WHERE id_mano = " + id;
-                manosEliminadas = statement.executeUpdate(delete);
+                manosEliminadas += statement2.executeUpdate(delete);
             }
         } finally {
             closeConexion();
@@ -654,11 +594,11 @@ public class DAOImpl implements DAO {
             // Borra la partida
             String deletePartida = "DELETE FROM PARTIDAS WHERE id_partida = " + numPartida;
             statement2.executeUpdate(deletePartida);
-            if (registros.next()) {
+            while (registros.next()) {
                 // Borra las manos
                 int id = registros.getInt("id_mano");
                 String deleteManos = "DELETE FROM MANOS WHERE id_mano = " + id;
-                manosEliminadas = statement3.executeUpdate(deleteManos);
+                manosEliminadas += statement3.executeUpdate(deleteManos);
             }
         } finally {
             closeConexion();

@@ -22,16 +22,6 @@ public class ListaJugadores{
     
     
     /**
-     * Iterador que devuelve los jugadores de la lista.
-     * @return Los jugadores de la lista.
-     */
-    public Iterator<Jugador> getJugadores() {
-        return listaJugadores.iterator();
-    }
-    
-    
-    
-    /**
      * M�todo que sirve para agregar un nuevo jugador a la lista.
      * @param jugador A�ade un jugador.
      */
@@ -80,5 +70,9 @@ public class ListaJugadores{
             return true;
         else
             return false;
+    }
+
+    public LinkedList<Jugador> getListaJugadores() {
+        return listaJugadores;
     }
 }

@@ -83,21 +83,13 @@ public interface DAO {
     public ListaPartidas recuperarPartidas(String nombreJug) throws SQLException, ErrorSQL;
     
     /**
-     * Recupera una partida de la base de datos.
-     * @param numPartida Número de partida.
-     * @return Devuelve un objeto partida con los datos almacenados.
+     * Inserta una partida en la base de datos.
+     * @param partida Partida a insertar
+     * @return Devuelve 1 si se ha podido insertar, 0 si no.
      * @throws ErrorSQL
      * @throws SQLException
      */
-    public Partida recuperarPartida(int numPartida) throws SQLException, ErrorSQL;
-    
-    /**
-     * Inserta una lista de partidas en la base de datos.
-     * @param listaPartidas Contenedor con las partidas.
-     * @return Devuelve el número de registros insertados.
-     * @throws SQLException
-     */
-    public int insertarPartidas(ListaPartidas listaPartidas) throws SQLException;
+    public int insertarPartida(Partida partida) throws SQLException, ErrorSQL;
     
      /**
       * Inserta una lista de jugadores en la base de datos.
@@ -123,14 +115,6 @@ public interface DAO {
       * @throws ErrorSQL
       */
     public int insertarManos(ListaManos listaManos) throws SQLException, ErrorSQL;
-    
-     /**
-      * Inserta una mano en la base de datos.
-      * @param mano Mano a insertar.
-      * @return Devuelve 1 si se ha insertado, 0 si no se ha podido insertar.
-      * @throws SQLException
-      */
-    public int insertarManos(Mano mano) throws SQLException, ErrorSQL;
     
     /**
      * Elimina un jugador de la base de datos.

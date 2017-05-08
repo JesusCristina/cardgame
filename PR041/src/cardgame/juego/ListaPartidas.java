@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 /**
  * Clase contenedora que guarda una lista de partidas.
- * @author Cristina Polo Sánchez
+ * @author Cristina Polo Sï¿½nchez
  */
 public class ListaPartidas {
     private LinkedList<Partida> listaPartidas;
@@ -18,28 +18,17 @@ public class ListaPartidas {
         listaPartidas = new LinkedList<Partida>();
     }
     
-    
     /**
-     * Iterador que devuelve las partidas de la lista.
-     * @return Los partidas de la lista.
-     */
-    public Iterator<Partida> getPartidas() {
-        return listaPartidas.iterator();
-    }
-    
-    
-    
-    /**
-     * Método que sirve para agregar una nueva partida a la lista.
-     * @param jugador Añade una partida.
+     * Mï¿½todo que sirve para agregar una nueva partida a la lista.
+     * @param jugador Aï¿½ade una partida.
      */
     public void agregarPartida (Partida partida) {
         listaPartidas.add(partida);
     }
     
     /**
-     * Método que sirve para mostrar partidas.
-     * @param posicion Posición en la que se encuentra la partida en la lista.
+     * Mï¿½todo que sirve para mostrar partidas.
+     * @param posicion Posiciï¿½n en la que se encuentra la partida en la lista.
      * @return Devuelve la partida.
      */
     public Partida damePartida(int posicion) {
@@ -50,8 +39,8 @@ public class ListaPartidas {
     
     /**
      * Se elimina una partida de la lista. Cada partida se diferencia de las
-     * demás por la posición que ocupa en la lista.
-     * @param posicion Posición (expresada en un número entero) de una partida
+     * demï¿½s por la posiciï¿½n que ocupa en la lista.
+     * @param posicion Posiciï¿½n (expresada en un nï¿½mero entero) de una partida
      * en concreto de la lista de partidas.
      */
     public void eliminaPartida(int posicion) {
@@ -60,12 +49,15 @@ public class ListaPartidas {
     
     
     /**
-     * Proporciona información sobre el tamaño de la lista de partidas.
-     * @return Devuelve, en números enteros, el tamaño de la lista de 
+     * Proporciona informaciï¿½n sobre el tamaï¿½o de la lista de partidas.
+     * @return Devuelve, en nï¿½meros enteros, el tamaï¿½o de la lista de 
      * partidas.
      */
     public int size() {
         return listaPartidas.size();
-    }    
+    }
 
+    public LinkedList<Partida> getListaPartidas() {
+        return listaPartidas;
+    }
 }

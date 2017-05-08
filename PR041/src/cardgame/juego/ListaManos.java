@@ -18,16 +18,7 @@ public class ListaManos {
      */    
     public ListaManos() {
         listaManos = new ArrayList<Mano>();  
-    }       
-    
-    
-    /**
-     * Iterador que devuelve las manos de la lista.
-     * @return Las manos de la lista.
-     */    
-    public Iterator<Mano> getManos() {
-        return listaManos.iterator();
-    }    
+    }        
     
     /**
      * M�todo que sirve para agregar una nueva mano a la lista.
@@ -64,6 +55,10 @@ public class ListaManos {
      */    
     public int size() {
         return listaManos.size();
+    }
+
+    public ArrayList<Mano> getListaManos() {
+        return listaManos;
     }
 }
 

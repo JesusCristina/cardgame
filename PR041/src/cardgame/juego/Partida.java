@@ -36,14 +36,28 @@ public class Partida {
     this.resultado = resultado;
     }
 
+
+    /**
+     * Método getter de la propiedad NumPartida, que devuelve el número de la partida.
+     * @return El número de la partida.
+     */
+
     public int getNumPartida() {
         return numPartida;
     }
 
+    /**
+     * Método getter de la propiedad Jugadores, que devuelve el jugador.
+     * @return El jugador.
+     */
     public LinkedList<Jugador> getJugadores() {
         return jugadores;
     }
-
+    
+    /**
+     * Método getter de la propiedad Resultado, que devuelve el resultado.
+     * @return El resultado.
+     */
     public LinkedList<Mano> getResultado() {
         return resultado;
     }

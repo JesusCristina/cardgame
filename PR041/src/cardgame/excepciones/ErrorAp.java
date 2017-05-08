@@ -12,15 +12,6 @@ public class ErrorAp extends Exception {
      */
     private int codError;
     
-    /*
-     * -- TABLA DE CÓDIGOS DE ERROR --
-     * 01 - Error de Entrada/Salida.
-     * Excepción: IOException.
-     * .
-     * .
-     */
-    //TODO Incluir todos los códigos de error posibles.
-    
     /**
      * Mensaje del error.
      */

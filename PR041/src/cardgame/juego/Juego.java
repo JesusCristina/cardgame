@@ -2,29 +2,25 @@ package cardgame.juego;
 
 import cardgame.bd.DAO;
 import cardgame.bd.DAOImpl;
-
 import cardgame.procesos.Procesos;
-
 import cardgame.procesos.ProcesosImpl;
-
 import cardgame.util.Menu;
 import cardgame.util.UtilidadesES;
-
 import java.io.IOException;
 
-
 /**
- * Clase contenedora de la mec�nica del juego.
+ * Clase que ejecuta el juego.
+ * @author Cristina Polo Sánchez
  */
 public class Juego {
     
     /**
-     * Contenedor del men� del juego.
+     * Menú del juego.
      */
     private Menu menu;
     
     /**
-     * Contenedor de las utilidades del juego.
+     * Ofrece utilidad de E/S.
      */
     private UtilidadesES utilidadesES;
     
@@ -34,17 +30,20 @@ public class Juego {
     private DAO dao;
     
     /**
-     * Objeto orientado a los procesos del juego.
+     * Objeto que procesa las opciones del menú del juego.
      */
     private Procesos procesos;
     
     /**
      * Constructor por defecto de la clase Juego que crea
-     * objetos de utilidad, procesos y un bean DAO para el
+     * un objeto de utilidad para entrada y salida, un
+     * objeto orientado aprocesos y un bean DAO para el
      * acceso a base de datos.
      */
     public Juego() {
+        // Se utiliza el mismo objeto de utilidad para toda la aplicación.
         utilidadesES = UtilidadesES.getUtilidadesES();
+        // Menú del juego inicializado con la técnica de double bracing.
         menu = new Menu(utilidadesES){{
             agregarOpcion("Crear mazo y barajar.");
             agregarOpcion("Establecer número de jugadores (2 o 4).");
@@ -54,12 +53,16 @@ public class Juego {
             agregarOpcion("Eliminar juego.");
             agregarOpcion("Salir.");
         }};
+        /*
+         * Crea un objeto DAO al que se le proporciona la base de datos,
+         * el nombre de usuario y su contraseña.
+         */
         dao = new DAOImpl("cardgame", "cardgame", "cardgame");
         procesos = new ProcesosImpl(dao, utilidadesES);
     }
     
     /**
-     * Muestra el menú del juego y procesa una opción.
+     * Muestra el menú del juego y procesa una opción elegida.
      */
     public void ejecutar() {
         int opcion = -1;

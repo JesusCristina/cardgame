@@ -255,7 +255,7 @@ public class DAOImpl implements DAO {
                         listaJugadores.add(jugador);
                     }
                     // Cuando hay una nueva mano, la añado al contenedor resultados y creo una nueva Mano
-                    if (numMano != registros.getInt("MANOS.id_mano")) {
+                    if (numMano != registros.getInt("MANOS.id_mano") || registros.isLast()) {
                         numMano = registros.getInt("MANOS.id_mano");
                         mano.setPropietario(nombre);
                         resultado.add(mano);
